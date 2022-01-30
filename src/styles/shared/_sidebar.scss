@@ -1,0 +1,61 @@
+.sidebar-main {
+    background-color: $sidebarColor;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 250px;
+    padding-top: 70px;
+    z-index: 1 !important;
+    .sidebar-div {
+        height: 60px;
+        position: relative;
+        // background-color: red !important;
+        .sidebar-name-text {
+            color: $sidebarItemColor;
+        }
+        .sidebar-icon {
+            color: $sidebarItemColor;
+            margin: 17px 0px 20px 5px;
+            font-size: 25px;
+        }
+
+        .sidebar-label {
+            color: $sidebarItemColor;
+            margin: 17px 0px 20px 0px;
+        }
+        .drop-down-icons {
+            color: $sidebarItemColor;
+            top:17px;
+            right: 10px;
+            font-size: 25px;
+            display: block;
+            position: absolute !important;
+        }
+    }
+
+    .sidebar-div:hover,.sidebar-item-active {
+        padding-top: 5px;
+        background-color: $primaryBtnBackColor;
+        transition: 0.5s;
+        cursor: pointer;
+        height: 70px;
+
+        .sidebar-name-text {
+            color: $sidebarItemColor;
+        }
+        .sidebar-icon {
+            color: $sidebarItemColor;
+            margin: 17px 0px 20px 5px;
+            font-size: 25px;
+            transition: 0.5s;
+        }
+
+        .sidebar-label {
+            transition: 0.5s;
+            color: $sidebarItemColor;
+            margin: 17px 0px 20px 0px;
+        }
+    }
+    
+}

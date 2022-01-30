@@ -1,0 +1,81 @@
+$primaryColor: #7e0a15;
+$primaryLightColor: #99353f;
+$primaryLightColor-2: #b15353;
+$primaryLightColor-3: #e58f8f;
+$primaryBtnBackColor: #8e4d346c;
+
+$secondaryColor: #ffffff;
+
+$backgroundColor: #f3f3f3;
+
+$footerColor: #7e0a15;
+$footerContentColor: #e4e4ff;
+
+$navbarColor: #b11200;
+$navbarColorTransparent: rgba(10, 10, 10, 0.445);
+$sidebarColor: #640912;
+$sidebarItemColor: #bebebe;
+
+$fontTitleColor: #3d3d3d;
+
+.main-router-non-auth {
+    padding-top: 70px;
+    min-height: 75vh;
+}
+.main-router-auth {
+    padding-top: 70px;
+    padding-left: 250px;
+    min-height: 90vh;
+}
+html {
+    scroll-behavior: smooth;
+}
+.image-loader-main{
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 100000;
+    top:0;
+}
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./styles/common/forms/custom-btn";
+@import "./styles/common/forms/custom-fileuploader";
+@import "./styles/common/forms/custom-input";
+@import "./styles/common/forms/custom-textarea.scss";
+@import "./styles/common/forms/custom-selectbox.scss";
+@import "./styles/common/forms/custom-checkbox.scss";
+
+@import "./styles/common/ui-components/alert";
+@import "./styles/common/ui-components/loader";
+@import "./styles/common/ui-components/popup";
+@import "./styles/common/ui-components/table";
+
+//page not found
+@import "./styles/common/utils/page-not-found";
+
+//navbar
+@import "./styles/shared/navbar";
+
+//sidebar
+@import "./styles/shared/sidebar.scss";
+//Loader
+@import "./styles/common/utils/loader.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//page Loader
+@import "./styles/shared/page-loader";
+

@@ -1,0 +1,11 @@
+.loader-main {
+    height: 100%;
+    width: 100%;
+    .loader {
+        position: relative;
+        display: block;
+        margin:auto;
+        width: 40px;
+        height: 40px;
+    }
+}

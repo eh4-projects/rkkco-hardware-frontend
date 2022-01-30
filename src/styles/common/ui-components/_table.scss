@@ -1,0 +1,22 @@
+.table-main{
+    h1{
+        color: $primaryColor;
+        text-align: center;
+        padding: 20px;
+    }
+    .pagination-div{
+        float: right;
+        // background-color: red;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .table-row-card{
+        width: 100%;
+        border: 1px solid rgb(211, 210, 210) !important;
+    }
+
+    .page-item{
+        cursor: pointer;
+    }
+}
