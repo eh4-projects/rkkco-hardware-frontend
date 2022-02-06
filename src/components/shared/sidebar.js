@@ -12,12 +12,10 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar-main">
-            <div className="container">
                 {SideBarItems.map((e, index) => {
                     return (
                         isAllowed(e.allowed, auth.userType) ?
                             e.subItems && e.subItems.length > 0 ?
-
                                 <div className="accordion" id="accordionExample" key={index}>
                                     <div id="headingOne">
                                         <div data-toggle="collapse" data-target="#collapseOne">
@@ -46,26 +44,22 @@ const Sidebar = () => {
                                                     </div>
                                                 );
                                             })}
-
-
-
                                         </div>
                                     </div>
                                 </div>
-                                : <div key={index} className={`row sidebar-div ${e.link === location.pathname ? 'sidebar-item-active' : ''}`} onClick={()=>history.push(e.link)}>
-                                    <div className="col-md-3">
+                                :
+                                 <div key={index} className={`row sidebar-div ${e.link === location.pathname ? 'sidebar-item-active' : ''}`} onClick={()=>history.push(e.link)}>
+                                    <div className="col-md-3 col-lg-2">
                                         <e.icon className="sidebar-icon" />
                                     </div>
-                                    <div className="col-md-9 sidebar-label" >
+                                    <div className="col-md-9 col-lg-10 sidebar-label" >
                                         <p className="sidebar-name-text" >{e.displayName}</p>
                                     </div>
-                                </div> :
+                                </div> 
+                                :
                             null
                     );
                 })}
-
-
-            </div>
         </div>
     );
 };

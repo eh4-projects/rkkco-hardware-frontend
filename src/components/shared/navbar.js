@@ -7,8 +7,12 @@ import { userTypes } from '../../config/user-type.config';
 import { AuthContextAPI } from '../contexts/auth.context';
 import { HiViewList } from 'react-icons/hi';
 import { MdMessage, MdNotificationsActive } from 'react-icons/md';
-import firebase from "../../services/firebase.service";
-import Logo from "../../assets/logos/SLFCrest-Logo.png";
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Navbars from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 
 const Navbar = ({
     isTransparent = false
@@ -16,26 +20,30 @@ const Navbar = ({
     const { auth, setAuth } = useContext(AuthContextAPI);
     const [count, setCount] = useState(0);
 
-    let location = useLocation();
-
-    useEffect(() => {
-        //  firebase.database.
-        firebase.db.collection("message_count").doc(auth.id).onSnapshot(snap => {
-            if (snap.exists) {
-                setCount(snap.data().count);
-
-            }
-        })
-    }, [auth])
-
     return (
         <div >
+            <Navbars expand="lg" className="stock-navbar" style={{ zIndex: 100 }}>
+                <Container fluid>
+                    <Navbars.Brand href="#">R.K. Kulathissa Co.</Navbars.Brand>
+                    <Navbars.Toggle aria-controls="NavbarsScroll" />
+                    <Navbars.Collapse id="NavbarsScroll">
+                        <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} NavbarScroll >
+                            <Nav.Link href="#action1">Home</Nav.Link>
+                            <Nav.Link href="#action1">Lobby</Nav.Link>
+                            <Nav.Link href="#action1">Stock Management</Nav.Link>
+                            <Nav.Link href="#action1">Sales Point</Nav.Link>
+                            <Nav.Link href="#action1">Quotation</Nav.Link>
+                        </Nav>
+                        <Form className="d-flex">
+                            <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
+                    </Navbars.Collapse>
+                </Container>
+            </Navbars>
 
-            <nav className={`navbar navbar-expand-md ${isTransparent ? 'navigation-clean-button-transparent' : 'navigation-clean-button'}`}>
+            {/* <nav className={`navbar navbar-expand-md ${isTransparent ? 'navigation-clean-button-transparent' : 'navigation-clean-button'}`}>
                 <div className="container-fluid">
-                    <a href="/" className="navbar-brand">
-                        <img src={Logo} alt="" className="nav-bar-logo"></img>
-                    </a>
 
                     <button data-toggle="collapse" className="navbar-toggler" data-target="#myNavbar">
                         <span className="sr-only">Toggle navigation</span><HiViewList className="navbar-toggler-icon" />
@@ -82,7 +90,7 @@ const Navbar = ({
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
         </div >
     );
 };
