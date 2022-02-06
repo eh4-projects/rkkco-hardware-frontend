@@ -1,32 +1,30 @@
 .sidebar-main {
-    background-color: $sidebarColor;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    width: 250px;
-    padding-top: 70px;
-    z-index: 1 !important;
+    background-color: #fafbfc;
+    box-shadow: 1px 1px 2px #e2e2e2;
+    position: relative;
+    width: 100%;
+    min-height: 93vh;
+    height: 100%;
+
     .sidebar-div {
         height: 60px;
-        position: relative;
-        // background-color: red !important;
+        width: 105%;
+        padding-left: 10px;
         .sidebar-name-text {
-            color: $sidebarItemColor;
+            color: rgb(68, 67, 67);
         }
         .sidebar-icon {
-            color: $sidebarItemColor;
+            color: rgb(77, 77, 77);
             margin: 17px 0px 20px 5px;
             font-size: 25px;
         }
-
         .sidebar-label {
             color: $sidebarItemColor;
             margin: 17px 0px 20px 0px;
         }
         .drop-down-icons {
             color: $sidebarItemColor;
-            top:17px;
+            top: 17px;
             right: 10px;
             font-size: 25px;
             display: block;
@@ -34,28 +32,25 @@
         }
     }
 
-    .sidebar-div:hover,.sidebar-item-active {
+    .sidebar-div:hover,
+    .sidebar-item-active {
         padding-top: 5px;
-        background-color: $primaryBtnBackColor;
         transition: 0.5s;
         cursor: pointer;
         height: 70px;
-
         .sidebar-name-text {
-            color: $sidebarItemColor;
+            color: rgb(0, 72, 228);
         }
         .sidebar-icon {
-            color: $sidebarItemColor;
-            margin: 17px 0px 20px 5px;
+            color: rgb(0, 72, 228);
+            margin: 17px 0px 0px 5px;
             font-size: 25px;
             transition: 0.5s;
         }
-
         .sidebar-label {
             transition: 0.5s;
-            color: $sidebarItemColor;
-            margin: 17px 0px 20px 0px;
+            color: rgb(0, 72, 228);
+            margin: 17px 0px 0px 0px;
         }
     }
-    
 }

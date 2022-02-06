@@ -1,4 +1,6 @@
-$primaryColor: blue;
+@import "~bootstrap/scss/bootstrap";
+
+$primaryColor: #7e0a15;
 $primaryLightColor: #99353f;
 $primaryLightColor-2: #b15353;
 $primaryLightColor-3: #e58f8f;
@@ -64,17 +66,21 @@ html {
 @import "./styles/common/ui-components/loader";
 @import "./styles/common/ui-components/popup";
 @import "./styles/common/ui-components/table";
-
 //page not found
 @import "./styles/common/utils/page-not-found";
-
 //navbar
 @import "./styles/shared/navbar";
-
 //sidebar
 @import "./styles/shared/sidebar.scss";
 //Loader
 @import "./styles/common/utils/loader.scss";
+//page Loader
+@import "./styles/shared/page-loader";
+
+
+
+//?stock management
+@import "./styles/stock-management/update-stock.scss";
 
 @import "./styles/pages/pages";
 @import "styles/pages/items/items";
