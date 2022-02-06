@@ -15,19 +15,22 @@ const NonAuthRoute=({
     let history = useHistory();
     return (
       <Route
-        {...rest}
-        render={(props) =>{
-            return (
-              <Fragment>
-                <Navbar isTransparent={isTransparent}/>
-                {auth.isLogged 
-                ? <Redirect to={get(history,"location.state.from","")?get(history,"location.state.from",""):defaultRoutes[get(auth,"userType","")]} />
-                : <Component {...props} />}
-              </Fragment>
-            )        
-        } 
-    }
-      />
+      {...rest}
+      render={(props) =>{
+          return (
+            <Fragment>
+              <Navbar isTransparent={isTransparent}/>
+              {auth.isLogged 
+              ? <Redirect to={get(history,"location.state.from","")?get(history,"location.state.from",""):defaultRoutes[get(auth,"userType","")]} />
+              : <div className="main-router-non-auth">
+                  <Component {...props} />
+                </div>
+              }
+            </Fragment>
+          )        
+      } 
+  }
+    />
     );
 }
 export {NonAuthRoute};

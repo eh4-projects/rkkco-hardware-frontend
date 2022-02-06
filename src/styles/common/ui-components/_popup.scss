@@ -10,9 +10,13 @@
     .popup-container {
         animation: name duration timing-function delay iteration-count direction fill-mode;
         margin: auto;
+        
         justify-content: center;
+        margin-top: 70px;
         width: 40%;
-        max-height: 500px;
+        max-height: 80vh;
+        // min-height: 500px;
+
         background-color: $backgroundColor;
         position: relative;
         border-radius: 5px;
@@ -26,8 +30,8 @@
         .popup-card-header {
             text-align: center;
             margin-top: 0px;
-            background: rgb(36, 0, 22);
-            background: radial-gradient(circle, rgb(90, 1, 1) 0%, $primaryColor 100%);
+            background: $primaryColor;
+            // background: radial-gradient(circle, rgb(90, 1, 1) 0%, $primaryColor 100%);
             min-height: 70px;
         }
         .popup-card-text {

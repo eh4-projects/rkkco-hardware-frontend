@@ -1,0 +1,20 @@
+.login-form-main{
+    // margin-top:70px ;
+    // background-color: red;
+    display: flex;
+    vertical-align: middle;
+    height: calc(100vh - 70px);
+    .login-form-card {
+        justify-content: center;
+        width: 400px;
+        height: 400px;
+        border-radius: 5px;
+        box-shadow: inset;
+        background-color: white;
+        margin: auto;
+        text-align: center;
+        padding: 40px;
+        box-shadow: 0px 10px 50px 0px #888888;
+
+    }
+}
