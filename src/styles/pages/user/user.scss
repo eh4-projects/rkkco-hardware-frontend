@@ -1,0 +1,65 @@
+.user-body {
+    margin: 1%;
+
+    .users-table-main {
+        width: 100%;
+        margin-bottom: 1%;
+        display: flex;
+    
+        .users-table-main-title {
+            width: 80%;
+            align-self: flex-start;
+            .h3 {
+                font-weight: bold;
+            }
+        }
+    
+        .users-table-main-adduser-button {
+            width: 20%;
+            align-self: flex-end;
+            border: none;
+            background-color: $navbarColor;
+    
+            .users-table-main-adduser-button-text {
+                color: #ffff;
+            }
+            
+            .users-table-main-adduser-button-text:hover {
+                color: #ffff;
+            }
+        }
+    }
+    
+    .users-table-filters {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    
+        .users-table-filters-name {
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        .users-table-filters-phoneno {
+            margin-left: 1%;
+            margin-right: 1%;
+    
+        }
+        .users-table-filters-type {
+            margin-left: 1%;
+            margin-right: 1%;
+    
+        }
+        .users-table-filters-search {
+            margin: 1%;
+            margin-top: 2%;
+        }
+        .users-table-filters-reset {
+            margin: 1%;
+            margin-top: 2%;
+        }
+    }
+    
+    .users-table-details {
+    
+    }
+}

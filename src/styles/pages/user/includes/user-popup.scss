@@ -1,0 +1,13 @@
+.add-user-input-fields {
+    display: flex;
+    flex-direction: column;
+
+    .add-user-input-fields-row {
+        display: flex;
+        justify-content: space-between;
+
+        .add-user-field-45w {
+            width: 45%;
+        }
+    }
+}

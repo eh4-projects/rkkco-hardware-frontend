@@ -1,5 +1,5 @@
 import React from 'react';
-import PageNotFoundImage from '../../../assets/common/404-error-2.png';
+// import PageNotFoundImage from '../../../assets/common/404-error-2.png';
 
 //rscp
 const PageNotFound = () => {
@@ -9,7 +9,7 @@ const PageNotFound = () => {
             <div className="container">
                 <div className="row">
                     <div className="page-not-found-devision-1">
-                        <img src={PageNotFoundImage} className="page-not-found-image" />
+                        {/* <img src={PageNotFoundImage} className="page-not-found-image" /> */}
                         <p className="page-not-found-head" >Oops! Page Not Found</p>
                         <p className="page-not-found-body" >Sorry, the page you're looking for doesn't exist or temporarily unavailable.</p>
                     </div>

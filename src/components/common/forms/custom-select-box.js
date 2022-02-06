@@ -38,7 +38,7 @@ const CustomSelectBox=({
 
     return (
         <div className={`form-group text-left ${errorMsg&&errorMsg!==unTouched?'is-invalid':''} ${extraClassesWrapper}`}>
-            <label htmlFor="select-box" className={`cust-select-box-lbl ${errorMsg&&errorMsg!==unTouched?'text-danger':''}`}>{title}</label>
+            {title?<label htmlFor="select-box" className={`cust-select-box-lbl ${errorMsg&&errorMsg!==unTouched?'text-danger':''}`}>{title}</label>:null}
             <select 
                 placeholder="Chamith"
                 id="select-box" 
@@ -54,7 +54,7 @@ const CustomSelectBox=({
                     })
                 }
             </select>
-            <small className={`${errorMsg&&errorMsg!==unTouched?'text-danger':'form-text text-muted'}`}>{errorMsg&&errorMsg!==unTouched?errorMsg:hintTxt}</small>
+            <small className={`${errorMsg&&errorMsg!==unTouched?'text-danger form-error':'form-text text-muted'}`}>{errorMsg&&errorMsg!==unTouched?errorMsg:hintTxt}</small>
         </div>
     )
 }

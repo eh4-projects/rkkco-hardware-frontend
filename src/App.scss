@@ -1,9 +1,10 @@
-$primaryColor: #7e0a15;
+$primaryColor: blue;
 $primaryLightColor: #99353f;
 $primaryLightColor-2: #b15353;
 $primaryLightColor-3: #e58f8f;
-$primaryBtnBackColor: #8e4d346c;
-
+$primaryBtnBackColor: rgb(255, 255, 255,0.1);
+$successColor: rgb(11, 102, 35);
+$primaryBtnColor:rgb(25, 25, 112);
 $secondaryColor: #ffffff;
 
 $backgroundColor: #f3f3f3;
@@ -11,16 +12,17 @@ $backgroundColor: #f3f3f3;
 $footerColor: #7e0a15;
 $footerContentColor: #e4e4ff;
 
-$navbarColor: #b11200;
+$navbarColor: blue;
 $navbarColorTransparent: rgba(10, 10, 10, 0.445);
-$sidebarColor: #640912;
-$sidebarItemColor: #bebebe;
+$sidebarColor: rgba(10, 10, 10, 1);
+$sidebarItemColor:white;
 
 $fontTitleColor: #3d3d3d;
 
 .main-router-non-auth {
     padding-top: 70px;
-    min-height: 75vh;
+    min-height: 100vh ;
+    // background-color: green;
 }
 .main-router-auth {
     padding-top: 70px;
@@ -37,6 +39,18 @@ html {
     position: absolute;
     z-index: 100000;
     top:0;
+}
+
+.text-color-white{
+    color: white;
+}
+
+.text-color-success{
+    color: $successColor;
+}
+
+.form-error{
+    font-size: 14px;
 }
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./styles/common/forms/custom-btn";
@@ -62,20 +76,16 @@ html {
 //Loader
 @import "./styles/common/utils/loader.scss";
 
-
-
-
-
-
-
-
-
-
-
-
-
+@import "./styles/pages/pages";
+@import "styles/pages/items/items";
+@import "styles/pages/items/drop";
 
 
 //page Loader
 @import "./styles/shared/page-loader";
 
+//user
+@import "./styles/pages/user/user.scss";
+
+//user-popup
+@import "./styles/pages/user/includes/user-popup.scss";
