@@ -1,0 +1,38 @@
+.overview-main{
+    padding: 20px;
+   
+    .sell-btn{
+        background-color: $successColor;
+    }
+    .buy-btn{
+        background-color: $primaryBtnColor;
+    }
+    .icon-btn{
+        float: right;
+        width: auto !important;
+        border: 2px;
+    }
+    .total-text-field{
+        color: black;
+        font-size: 14px;
+    }
+    .add-warehouse-btn{
+        width: 200px !important;
+        height: 50px;
+        background-color: $primaryBtnColor;
+        margin-right: 10px !important;
+    }
+}
+.action-btn-group{
+    button{
+        margin-right: 10px;
+        background-color: white !important;
+
+    }
+}
+.action-btn-group:hover{
+    button{
+        margin-right: 10px;
+        background-color: white !important;
+    }
+}

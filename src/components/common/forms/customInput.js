@@ -17,7 +17,7 @@ const CustomInput = ({
     hintTxt = "",
     validations = [],
     password = "",
-    maxLength=25
+    maxLength=25,
 }) => {
     const [localError, setLocalError] = useState("");
     useEffect(() => {
@@ -71,7 +71,7 @@ const CustomInput = ({
                     setLocalError(pre => {
                         if (pre === isPasswordMatch)
                             return ""
-                        
+
                         else
                             return pre;
                     })
@@ -87,8 +87,8 @@ const CustomInput = ({
                     })
                 } else {
                     setLocalError(isName);
-                }   
-                
+                }
+
             }else if (validations[i] === isNumber) {
                 let pattern = /^[a-z,.']{1,25}$/i;
                 if (pattern.test(value)) {
@@ -100,8 +100,8 @@ const CustomInput = ({
                     })
                 } else {
                     setLocalError(isName);
-                }   
-                
+                }
+
             } else if (validations[i] === isRequired) {
                 if (value !== "") {
                     setLocalError(pre => {
@@ -154,9 +154,9 @@ const CustomInput = ({
 
     return (
         <div className={`form-group text-left ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''} ${extraClassesWrapper}`}>
-            <label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''}`}>
+            {label?<label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''}`}>
                 {label}
-            </label>
+            </label>:null}
             <input
                 onChange={(e) => { onChange(e.target.name, e.target.value, e) }}
                 value={value}
@@ -165,8 +165,10 @@ const CustomInput = ({
                 disabled={disabled}
                 className={`form-control ${extraClasses} ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''}`}
                 placeholder={placeholder}
+
+
             />
-            <small className={`${errorMsg && errorMsg !== unTouched ? 'text-danger' : 'form-text text-muted'}`}>{errorMsg && errorMsg !== unTouched ? errorMsg : hintTxt}</small>
+            <small className={`${errorMsg && errorMsg !== unTouched ? 'text-danger form-error' : 'form-text text-muted'}`}>{errorMsg && errorMsg !== unTouched ? errorMsg : hintTxt}</small>
         </div>
 
     );
