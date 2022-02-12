@@ -7,8 +7,8 @@ import { userTypes } from '../../config/user-type.config';
 import { AuthContextAPI } from '../contexts/auth.context';
 import { HiViewList } from 'react-icons/hi';
 import { MdMessage, MdNotificationsActive } from 'react-icons/md';
-import firebase from "../../services/firebase.service";
-import Logo from "../../assets/logos/SLFCrest-Logo.png";
+// import firebase from "../../services/firebase.service";
+// import Logo from "../../assets/logos/SLFCrest-Logo.png";
 
 const Navbar = ({
     isTransparent = false
@@ -18,24 +18,24 @@ const Navbar = ({
 
     let location = useLocation();
 
-    useEffect(() => {
-        //  firebase.database.
-        firebase.db.collection("message_count").doc(auth.id).onSnapshot(snap => {
-            if (snap.exists) {
-                setCount(snap.data().count);
+    // useEffect(() => {
+    //     //  firebase.database.
+    //     firebase.db.collection("message_count").doc(auth.id).onSnapshot(snap => {
+    //         if (snap.exists) {
+    //             setCount(snap.data().count);
 
-            }
-        })
-    }, [auth])
+    //         }
+    //     })
+    // }, [auth])
 
     return (
         <div >
 
             <nav className={`navbar navbar-expand-md ${isTransparent ? 'navigation-clean-button-transparent' : 'navigation-clean-button'}`}>
                 <div className="container-fluid">
-                    <a href="/" className="navbar-brand">
+                    {/* <a href="/" className="navbar-brand">
                         <img src={Logo} alt="" className="nav-bar-logo"></img>
-                    </a>
+                    </a> */}
 
                     <button data-toggle="collapse" className="navbar-toggler" data-target="#myNavbar">
                         <span className="sr-only">Toggle navigation</span><HiViewList className="navbar-toggler-icon" />
