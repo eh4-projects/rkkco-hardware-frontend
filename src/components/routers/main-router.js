@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContextAPI } from '../contexts/auth.context';
 import { UpdateStock } from '../../../src/components/stock-management/update-stock';
+import { ItemRegistration } from '../../../src/components/item-management/item-registration';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Sidebar } from '../shared/sidebar';
@@ -33,6 +34,7 @@ const MainRouter = () => {
 
             <NonAuthRoute path="/signin" exact={true} component={SignIn} />
             <Route path="/update-stock" exact={true} component={UpdateStock} />
+            <Route path="/item-registration" exact={true} component={ItemRegistration} />
           </Switch>
         </Col>
 
