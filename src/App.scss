@@ -22,12 +22,9 @@ $sidebarItemColor: #7e0a15;
 $fontTitleColor: #3d3d3d;
 
 .main-router-non-auth {
-    // padding-top: 48px;
-    min-height: 100vh;
-    // background-color: green;
+    min-height: calc(100vh - 56px);
 }
 .main-router-auth {
-    // padding-top: 48px;
     padding-left: 250px;
     min-height: 90vh;
 }
@@ -42,15 +39,12 @@ html {
     z-index: 100000;
     top: 0;
 }
-
 .text-color-white {
     color: white;
 }
-
 .text-color-success {
     color: $successColor;
 }
-
 .form-error {
     font-size: 14px;
 }
@@ -78,10 +72,10 @@ html {
 @import "./styles/shared/page-loader";
 
 //?stock management
-@import "./styles/components/stock-management/update-stock.scss";
+@import "./styles/pages/stock-management/update-stock.scss";
 
 //?item-management
-@import "./styles/components/item-management/item-registration.scss";
+@import "./styles/pages/item-management/item-registration.scss";
 
 @import "./styles/pages/pages";
 @import "styles/pages/items/items";
