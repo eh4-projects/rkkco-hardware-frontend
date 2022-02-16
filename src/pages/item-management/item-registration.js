@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import DefaultImage from '../../assets/default_image_01.png';
-import { CustomButton } from '../common/forms/custom-btn';
+import { CustomButton } from '../../components/common/forms/custom-btn';
 
 
 
 const ItemRegistration = () => {
 
     const [itemImage, setItemImage] = useState(DefaultImage);
-
     const ImageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
