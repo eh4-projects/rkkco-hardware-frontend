@@ -19,13 +19,13 @@ const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
   return (
     <div >
-      <Navbar />
-      <Row style={{ maxWidth: '99.6vw' }}>
+      {/* <Navbar /> */}
+      {/* <Row style={{ maxWidth: '99.6vw' }}>
         <Col md={2}>
           <Sidebar />
-        </Col>
+        </Col> */}
 
-        <Col md={10}>
+        {/* <Col md={10}> */}
           <Switch>
             <Route exact={true} path="/" component={() => <Redirect to={{ pathname: '/signin' }} />} />
 
@@ -36,9 +36,9 @@ const MainRouter = () => {
             <Route path="/update-stock" exact={true} component={UpdateStock} />
             <Route path="/item-registration" exact={true} component={ItemRegistration} />
           </Switch>
-        </Col>
+        {/* </Col> */}
 
-      </Row>
+      {/* </Row> */}
     </div>
   );
 }

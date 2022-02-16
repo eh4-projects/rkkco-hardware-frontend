@@ -16,18 +16,18 @@ $footerContentColor: #7e0a15;
 
 $navbarColor: blue;
 $navbarColorTransparent: rgba(10, 10, 10, 0.445);
-$sidebarColor: rgba(10, 10, 10, 1);
+$sidebarColor: #fafbfc;
 $sidebarItemColor: #7e0a15;
 
 $fontTitleColor: #3d3d3d;
 
 .main-router-non-auth {
-    padding-top: 70px;
+    // padding-top: 48px;
     min-height: 100vh;
     // background-color: green;
 }
 .main-router-auth {
-    padding-top: 70px;
+    // padding-top: 48px;
     padding-left: 250px;
     min-height: 90vh;
 }
