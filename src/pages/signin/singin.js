@@ -10,18 +10,18 @@ import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { isEmail, isRequired } from '../../config/validation.config';
 import { UserService } from '../../services/user.service';
 
-
 const SignIn = () => {
     const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
     const [userService, setuserService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
-    useEffect(() => {
-        setuserService(new UserService(setLoader, setAlert, setAuth));
-    }, []);
+
     const onSubmit = async () => {
         await userService.signin(form.email, form.password);
     };
+    useEffect(() => {
+        setuserService(new UserService(setLoader, setAlert, setAuth));
+    }, []);
 
     return <div className='login-form-main'>
         <CustomForm

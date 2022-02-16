@@ -14,8 +14,7 @@ const Sidebar = () => {
         <div className="sidebar-main">
                 {SideBarItems.map((e, index) => {
                     return (
-                        isAllowed(e.allowed, auth.userType) ?
-                            e.subItems && e.subItems.length > 0 ?
+                        isAllowed(e.allowed, auth.userType) ? e.subItems && e.subItems.length > 0 ?
                                 <div className="accordion" id="accordionExample" key={index}>
                                     <div id="headingOne">
                                         <div data-toggle="collapse" data-target="#collapseOne">
