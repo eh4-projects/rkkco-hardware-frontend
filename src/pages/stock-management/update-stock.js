@@ -1,7 +1,6 @@
 import React from 'react';
-import Image from 'react-bootstrap/Image'
 import MyImage from '../../assets/nerolac-pearls-500x500.jpg';
-import { CustomButton } from '../common/forms/custom-btn';
+import { CustomButton } from '../../components/common/forms/custom-btn';
 
 const UpdateStock = () => {
     return (

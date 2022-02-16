@@ -21,6 +21,18 @@ const SideBarItems=[
         link:"/stock",
         allowed:[userTypes.OcMember,userTypes.Admin],
     },
+    {
+        icon:AiFillShop,
+        displayName:"Update Stock",
+        link:"/update-stock",
+        allowed:[userTypes.Guest,userTypes.Admin]
+    },
+    {
+        icon:AiFillWechat,
+        displayName:"Item Registration",
+        link:"/item-registration",
+        allowed:[userTypes.OcMember,userTypes.Admin],
+    },
 
 ];
 

@@ -30,59 +30,56 @@ const SignIn = () => {
             mainClass="login-form-card"
             onSubmit={onSubmit}
             setError={setErrorCustom}
-            errors={errors}
-        >
-            <h1>Login</h1>
-            
-            <div className="login-form-inputs">
-                <CustomInput
-                    className="cust-input"
-                    placeholder="Enter Email"
-                    name="email"
-                    label="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={setFormCustom}
-                    errorMsg={errors.email}
-                    setError={setErrorCustom}
-                    validations={[isRequired, isEmail]}
-                    maxLength={320}
-                    disabled={false}
-                />
-            </div>
-            <div className="login-form-inputs">
-                <CustomInput
-                    className="cust-input"
-                    placeholder="Enter Password"
-                    name="password"
-                    label="Password"
-                    type="password"
-                    value={form.password}
-                    onChange={setFormCustom}
-                    errorMsg={errors.password}
-                    setError={setErrorCustom}
-                    validations={[isRequired]}
-                    password={50}
-                />
-                <p className="forgot-password">
-                    Forgot <Link to="/forgot-password">Password?</Link>
-                </p>
+            errors={errors}>
 
-            </div>
-            <div className="login-form-inputs">
-                <CustomButton
-                    btnType="submit"
-                    btnText="Login"
-                    customClasses="login-form-submit-btn"
-                />
-            </div>
+            <div className="card">
+                <div className="card-header">
+                    <h1>Login</h1>
+                </div>
+                <div className="card-body">
+                    <div className="container">
+                        <CustomInput
+                            className="cust-input"
+                            placeholder="Enter Email"
+                            name="email"
+                            label="Email"
+                            type="email"
+                            value={form.email}
+                            onChange={setFormCustom}
+                            errorMsg={errors.email}
+                            setError={setErrorCustom}
+                            validations={[isRequired, isEmail]}
+                            maxLength={320}
+                            disabled={false}
+                        />
+                        <CustomInput
+                            className="cust-input"
+                            placeholder="Enter Password"
+                            name="password"
+                            label="Password"
+                            type="password"
+                            value={form.password}
+                            onChange={setFormCustom}
+                            errorMsg={errors.password}
+                            setError={setErrorCustom}
+                            validations={[isRequired]}
+                            password={50}
+                        />
+                        <p className="forgot-password">
+                            Forgot <Link to="/forgot-password">Password?</Link>
+                        </p>
+                    </div>
+                </div>
+                <div className="card-footer">
 
+                    <CustomButton
+                        btnType="submit"
+                        btnText="Login"
+                        customClasses="login-form-submit-btn"
+                    />
+                </div>
+            </div>
         </CustomForm>
     </div>
-
-
-
-
-
 }
 export { SignIn };

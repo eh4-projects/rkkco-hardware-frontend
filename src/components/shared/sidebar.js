@@ -23,7 +23,7 @@ const Sidebar = () => {
                                                 <div className="col-md-3">
                                                     <e.icon className="sidebar-icon" />
                                                 </div>
-                                                <div className="col-md-8" className="sidebar-label" >
+                                                <div className="sidebar-label col-md-8" >
                                                     <p className="sidebar-name-text">{e.displayName}</p>
                                                 </div>
                                                 <FiChevronDown className="drop-down-icons" />

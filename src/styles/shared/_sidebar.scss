@@ -1,10 +1,13 @@
 .sidebar-main {
-    background-color: #fafbfc;
+    background-color: $sidebarColor;
     box-shadow: 1px 1px 2px #e2e2e2;
-    position: relative;
-    width: 100%;
-    min-height: 93vh;
-    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 250px;
+    padding-top: 70px;
+    z-index: 1 !important;
 
     .sidebar-div {
         height: 60px;
@@ -34,10 +37,13 @@
 
     .sidebar-div:hover,
     .sidebar-item-active {
-        padding-top: 5px;
+        background: rgba(0, 153, 255, 0.082);
+        width: 100%;
+        z-index: -1;
+        border-radius: 0 50px 50px 0;
         transition: 0.5s;
         cursor: pointer;
-        height: 70px;
+        height: 60px;
         .sidebar-name-text {
             color: rgb(0, 72, 228);
         }
@@ -52,5 +58,36 @@
             color: rgb(0, 72, 228);
             margin: 17px 0px 0px 0px;
         }
+    }
+
+    .nav-link {
+        list-style: none;
+        position: relative;
+    }
+    .nav-link li {
+        padding: 10px 0;
+    }
+    .nav-link li a {
+        color: rgb(110, 110, 110);
+        text-decoration: none;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+    }
+    .nav-link li a i {
+        font-size: 50px;
+        margin-right: 20px;
+    }
+
+    .active {
+        background: black;
+        width: 100%;
+        height: 47px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, 0.4);
     }
 }
