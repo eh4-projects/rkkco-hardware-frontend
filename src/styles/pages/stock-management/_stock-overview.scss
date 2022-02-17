@@ -1,4 +1,4 @@
-.update-stock {
+.stock-overview-page {
     .stock-content {
         .stock-topic {
             font-size: 25px;
@@ -6,11 +6,8 @@
             margin-top: 2vh;
         }
     }
-    .scan-btn {
-        margin-top: 20px;
-    }
     .stock-update-form {
-        margin-top: 20px;
+        margin-top: 0px;
     }
     .dropdown {
         width: 100%;
@@ -35,12 +32,15 @@
     .btn-two {
         color: red;
     }
+    .btn-three {
+        color: rgb(0, 110, 255);
+    }
     .stock-card {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 30px;
     }
-    .stock-image {
-        height: 300px;
+    .pagination-div{
+        margin-bottom: -15px;
     }
 }
