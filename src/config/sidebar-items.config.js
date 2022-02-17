@@ -1,3 +1,8 @@
+
+import { RiDashboardLine, RiBillFill } from "react-icons/ri";
+import { FaUserCog, FaTools, FaUserPlus } from 'react-icons/fa';
+import { SiMinutemailer } from "react-icons/si";
+import {  AiFillShop, AiFillWechat } from "react-icons/ai";
 import { RiDashboardLine } from "react-icons/ri";
 import { FaUserCog } from 'react-icons/fa';
 import { AiFillShop, AiFillWechat } from "react-icons/ai";
@@ -27,6 +32,12 @@ const SideBarItems = [
         displayName: "Item Registration",
         link: "/item-registration",
         allowed: [userTypes.OcMember, userTypes.Admin],
+    },
+    {
+        icon:RiBillFill,
+        displayName:"Quotations",
+        link:"/quotation",
+        allowed:[userTypes.Admin],
     },
 
 ];

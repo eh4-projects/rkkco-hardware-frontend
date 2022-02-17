@@ -7,9 +7,12 @@ import { NormalRoute } from './normal-route';
 import { SignIn } from '../../pages/signin/singin';
 import { userTypes } from '../../config/user-type.config';
 import { Dashboard } from '../../pages/dashboard/dashboard';
+import { Stock } from '../../pages/stock/stock';
+import { Quotation } from '../../pages/quotation/quotation';
 import { ItemRegistration } from '../../pages/item-management/item-registration';
 import { UpdateStock } from '../../pages/stock-management/update-stock';
 import { StockOverview } from '../../pages/stock-management/stock-overview';
+
 
 const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
@@ -23,6 +26,7 @@ const MainRouter = () => {
         <AuthRoute path="/stock-overview" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={StockOverview} />
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
+        <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
       </Switch>
     </div>
   );
