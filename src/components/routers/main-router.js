@@ -7,7 +7,6 @@ import { NormalRoute } from './normal-route';
 import { SignIn } from '../../pages/signin/singin';
 import { userTypes } from '../../config/user-type.config';
 import { Dashboard } from '../../pages/dashboard/dashboard';
-import { Stock } from '../../pages/stock/stock';
 import { Quotation } from '../../pages/quotation/quotation';
 import { ItemRegistration } from '../../pages/item-management/item-registration';
 import { UpdateStock } from '../../pages/stock-management/update-stock';
