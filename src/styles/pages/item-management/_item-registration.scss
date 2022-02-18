@@ -1,0 +1,74 @@
+.item-registration {
+    .stock-content {
+        .stock-topic {
+            font-size: 25px;
+            font-weight: 500;
+            margin-top: 2vh;
+        }
+    }
+    .scan-btn {
+        margin-top: 20px;
+    }
+    .stock-update-form {
+        margin-top: 20px;
+    }
+    .dropdown {
+        width: 100%;
+    }
+    .field-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 15px;
+        margin-bottom: 2px;
+    }
+    .btn-group {
+        margin-top: 0px;
+    }
+    .stock-btn {
+        margin-right: 10px;
+        width: 150px;
+    }
+    .btn-one {
+        color: green;
+    }
+    .btn-two {
+        color: red;
+    }
+    .stock-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .stock-image {
+        height: 300px;
+        border: rgb(207, 207, 207) 1px solid;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .image-upload {
+        margin-left: 20px;
+        border-radius: 5px;
+        color: rgb(0, 132, 255);
+        border: rgb(0, 132, 255) solid 1px;
+        width:150px;
+        height:40px;
+        cursor: pointer;
+        padding: auto;
+        .btn-text{
+            margin-top: 7px;
+            margin-left: 35px;
+        }
+    }
+    .image-upload:hover {
+        color: #fff;
+        background-color: rgb(0, 132, 255);
+        cursor: pointer;
+        padding: auto;
+        transition: 0.5s;
+    }
+
+    #input[type="file"] {
+        display: none;
+    }
+}

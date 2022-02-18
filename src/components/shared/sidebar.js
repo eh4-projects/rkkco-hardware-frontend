@@ -14,8 +14,7 @@ const Sidebar = () => {
         <div className="sidebar-main">
                 {SideBarItems.map((e, index) => {
                     return (
-                        isAllowed(e.allowed, auth.userType) ?
-                            e.subItems && e.subItems.length > 0 ?
+                        isAllowed(e.allowed, auth.userType) ? e.subItems && e.subItems.length > 0 ?
                                 <div className="accordion" id="accordionExample" key={index}>
                                     <div id="headingOne">
                                         <div data-toggle="collapse" data-target="#collapseOne">
@@ -23,7 +22,7 @@ const Sidebar = () => {
                                                 <div className="col-md-3">
                                                     <e.icon className="sidebar-icon" />
                                                 </div>
-                                                <div className="col-md-8" className="sidebar-label" >
+                                                <div className="sidebar-label col-md-8" >
                                                     <p className="sidebar-name-text">{e.displayName}</p>
                                                 </div>
                                                 <FiChevronDown className="drop-down-icons" />

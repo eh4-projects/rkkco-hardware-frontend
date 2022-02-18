@@ -10,79 +10,75 @@ import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { isEmail, isRequired } from '../../config/validation.config';
 import { UserService } from '../../services/user.service';
 
-
 const SignIn = () => {
     const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
     const [userService, setuserService] = useState(undefined);
-
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
-    useEffect(() => {
-        setuserService(new UserService(setLoader, setAlert, setAuth));
-    }, []);
-
 
     const onSubmit = async () => {
         await userService.signin(form.email, form.password);
     };
+    useEffect(() => {
+        setuserService(new UserService(setLoader, setAlert, setAuth));
+    }, []);
+
     return <div className='login-form-main'>
         <CustomForm
             mainClass="login-form-card"
             onSubmit={onSubmit}
             setError={setErrorCustom}
-            errors={errors}
-        >
-            <h1>Login</h1>
-            
-            <div className="login-form-inputs">
-                <CustomInput
-                    className="cust-input"
-                    placeholder="Enter Email"
-                    name="email"
-                    label="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={setFormCustom}
-                    errorMsg={errors.email}
-                    setError={setErrorCustom}
-                    validations={[isRequired, isEmail]}
-                    maxLength={320}
-                    disabled={false}
-                />
-            </div>
-            <div className="login-form-inputs">
-                <CustomInput
-                    className="cust-input"
-                    placeholder="Enter Password"
-                    name="password"
-                    label="Password"
-                    type="password"
-                    value={form.password}
-                    onChange={setFormCustom}
-                    errorMsg={errors.password}
-                    setError={setErrorCustom}
-                    validations={[isRequired]}
-                    password={50}
-                />
-                <p className="forgot-password">
-                    Forgot <Link to="/forgot-password">Password?</Link>
-                </p>
+            errors={errors}>
 
+            <div className="card">
+                <div className="card-header login-card-header">
+                    <h3 className="card-title">Welcome!</h3>
+                </div>
+                <div className="card-body">
+                    <div className="container">
+                        <div className="container">
+                            <CustomInput
+                                className="cust-input"
+                                placeholder="RKK00001"
+                                name="email"
+                                label="User ID"
+                                type="text"
+                                value={form.email}
+                                onChange={setFormCustom}
+                                errorMsg={errors.email}
+                                setError={setErrorCustom}
+                                validations={[isRequired, isEmail]}
+                                maxLength={320}
+                                disabled={false}
+                            />
+                            <CustomInput
+                                className="cust-input"
+                                placeholder="**************"
+                                name="password"
+                                label="Password"
+                                type="password"
+                                value={form.password}
+                                onChange={setFormCustom}
+                                errorMsg={errors.password}
+                                setError={setErrorCustom}
+                                validations={[isRequired]}
+                                password={50}
+                            />
+                            <p className="forgot-password">
+                                <Link to="/forgot-password">Forgot Password?</Link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="card-footer login-card-footer">
+                    <CustomButton
+                        btnType="submit"
+                        btnText="Sign In"
+                        customClasses="btn btn-outline-primary login-form-submit-btn"
+                    />
+                </div>
             </div>
-            <div className="login-form-inputs">
-                <CustomButton
-                    btnType="submit"
-                    btnText="Login"
-                    customClasses="login-form-submit-btn"
-                />
-            </div>
-
         </CustomForm>
     </div>
-
-
-
-
-
 }
 export { SignIn };

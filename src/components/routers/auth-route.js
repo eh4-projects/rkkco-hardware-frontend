@@ -10,33 +10,33 @@ const AuthRoute = ({
   component: Component,
   allowed = [],
   isSidebar = false,
-  isTransparent=false,
+  isTransparent = false,
   ...rest
 }) => {
   const { auth, } = useContext(AuthContextAPI);
   return (
     <Route
-    {...rest}
-    render={(props) => {
-      return (
-        <Fragment>
-          <Navbar isTransparent={isTransparent} />
-          {auth.isLogged ?
-            (isAllowed(allowed, auth.userType)
-              ? <div className={(isSidebar ? "main-router-auth" : 'main-router-non-auth')}>
-                {isSidebar ? <Sidebar /> : null}
-                <Component {...props} />
-              </div>
-              : <PageNotFound />) :
-            <Redirect to={{
-              pathname: '/signin',
-              state: { from: rest.path }
-            }} />}
-        </Fragment>
-      )
-    }
-    }
-  />
+      {...rest}
+      render={(props) => {
+        return (
+          <Fragment>
+            <Navbar isTransparent={isTransparent} />
+            {auth.isLogged ?
+              (isAllowed(allowed, auth.userType)
+                ? <div className={(isSidebar ? "main-router-auth" : 'main-router-non-auth')}>
+                  {isSidebar ? <Sidebar /> : null}
+                  <Component {...props} />
+                </div>
+                : <PageNotFound />) :
+              <Redirect to={{
+                pathname: '/signin',
+                state: { from: rest.path }
+              }} />}
+          </Fragment>
+        )
+      }
+      }
+    />
 
   );
 }

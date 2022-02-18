@@ -4,54 +4,48 @@ $primaryColor: #7e0a15;
 $primaryLightColor: #99353f;
 $primaryLightColor-2: #b15353;
 $primaryLightColor-3: #e58f8f;
-$primaryBtnBackColor: rgb(255, 255, 255,0.1);
+$primaryBtnBackColor: rgb(255, 255, 255, 0.1);
 $successColor: rgb(11, 102, 35);
-$primaryBtnColor:rgb(25, 25, 112);
-$secondaryColor: #ffffff;
+$primaryBtnColor: rgb(25, 25, 112);
+$secondaryColor: #7e0a15;
 
-$backgroundColor: #f3f3f3;
+$backgroundColor: #7e0a15;
 
 $footerColor: #7e0a15;
-$footerContentColor: #e4e4ff;
+$footerContentColor: #7e0a15;
 
 $navbarColor: blue;
 $navbarColorTransparent: rgba(10, 10, 10, 0.445);
-$sidebarColor: rgba(10, 10, 10, 1);
-$sidebarItemColor:white;
+$sidebarColor: #fafbfc;
+$sidebarItemColor: #7e0a15;
 
 $fontTitleColor: #3d3d3d;
 
 .main-router-non-auth {
-    padding-top: 70px;
-    min-height: 100vh ;
-    // background-color: green;
+    min-height: calc(100vh - 56px);
 }
 .main-router-auth {
-    padding-top: 70px;
     padding-left: 250px;
     min-height: 90vh;
 }
 html {
     scroll-behavior: smooth;
 }
-.image-loader-main{
+.image-loader-main {
     background-color: white;
     height: 100vh;
     width: 100vw;
     position: absolute;
     z-index: 100000;
-    top:0;
+    top: 0;
 }
-
-.text-color-white{
+.text-color-white {
     color: white;
 }
-
-.text-color-success{
+.text-color-success {
     color: $successColor;
 }
-
-.form-error{
+.form-error {
     font-size: 14px;
 }
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -77,15 +71,16 @@ html {
 //page Loader
 @import "./styles/shared/page-loader";
 
-
-
 //?stock management
-@import "./styles/stock-management/update-stock.scss";
+@import "./styles/pages/stock-management/update-stock.scss";
+@import "./styles/pages/stock-management/stock-overview.scss";
+
+//?item-management
+@import "./styles/pages/item-management/item-registration.scss";
 
 @import "./styles/pages/pages";
 @import "styles/pages/items/items";
 @import "styles/pages/items/drop";
-
 
 //page Loader
 @import "./styles/shared/page-loader";

@@ -1,0 +1,46 @@
+.stock-overview-page {
+    .stock-content {
+        .stock-topic {
+            font-size: 25px;
+            font-weight: 500;
+            margin-top: 2vh;
+        }
+    }
+    .stock-update-form {
+        margin-top: 0px;
+    }
+    .dropdown {
+        width: 100%;
+    }
+    .field-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 15px;
+        margin-bottom: 2px;
+    }
+    .btn-group {
+        margin-top: 0px;
+    }
+    .stock-btn {
+        margin-right: 10px;
+        width: 150px;
+    }
+    .btn-one {
+        color: green;
+    }
+    .btn-two {
+        color: red;
+    }
+    .btn-three {
+        color: rgb(0, 110, 255);
+    }
+    .stock-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .pagination-div{
+        margin-bottom: -15px;
+    }
+}
