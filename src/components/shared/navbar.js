@@ -13,7 +13,7 @@ const Navbar = ({
 
     return (
         <div >
-            <nav className="navbar navbar-expand-lg navbar-light stock-navbar" style={{ zIndex: 100 }}>
+            <nav className="navbar navbar-expand-lg navbar-light stock-navbar" style={{ zIndex: 100, position: "fixed"}}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">R.K. Kulathissa Co.</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

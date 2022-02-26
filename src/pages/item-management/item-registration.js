@@ -27,26 +27,26 @@ const ItemRegistration = () => {
                         <div className="card-body">
                             <div className="row scan-btn-row">
                                 <div>
-                                    <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan Code" />
+                                    <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan Code" isSmall = "true"/>
                                 </div>
                             </div>
                             <form className="stock-update-form">
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Company Barcode</p>
-                                        <input type="text" name="category" className="form-control dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown form-control-sm" />
                                     </div>
                                   
                                     <div className="col">
                                         <p className="field-title">Item No</p>
-                                        <input type="text" name="category" className="form-control dropdown" value="Norway" disabled />
+                                        <input type="text" name="category" className="form-control dropdown form-control-sm" value="Norway" disabled />
                                     </div>
                                 </div>
                                 <div className="row">
                                     
                                     <div className="col">
                                         <p className="field-title">Category</p>
-                                        <input type="text" name="category" list="categoryList" className="form-control dropdown" />
+                                        <input type="text" name="category" list="categoryList" className="form-control dropdown form-control-sm" />
                                         <datalist id="categoryList">
                                             <option value="pen">Paint</option>
                                             <option value="pencil">Pencil</option>
@@ -55,7 +55,7 @@ const ItemRegistration = () => {
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Brand</p>
-                                        <input type="text" name="category" list="categoryList" className="form-control dropdown" />
+                                        <input type="text" name="category" list="categoryList" className="form-control dropdown form-control-sm" />
                                         <datalist id="categoryList">
                                             <option value="pen">Pen</option>
                                             <option value="pencil">Pencil</option>
@@ -67,12 +67,12 @@ const ItemRegistration = () => {
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Item Name</p>
-                                        <input type="text" name="category" className="form-control dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown form-control-sm" />
 
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Unit</p>
-                                        <input type="text" name="category" list="unitList" className="form-control dropdown" />
+                                        <input type="text" name="category" list="unitList" className="form-control dropdown form-control-sm" />
                                         <datalist id="unitList">
                                             <option value="kg">Kilogram</option>
                                             <option value="l">Liter</option>
@@ -83,11 +83,11 @@ const ItemRegistration = () => {
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Buying Price</p>
-                                        <input type="text" name="category" className="form-control dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown form-control-sm" />
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Selling Price</p>
-                                        <input type="text" name="category" className="form-control dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown form-control-sm" />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -103,10 +103,10 @@ const ItemRegistration = () => {
                             </form>
                         </div>
                         <div className="card-footer text-muted">
-                            <div className="row btn-group">
+                            <div className="row">
                                 <div className="col">
-                                    <CustomButton customClasses="stock-btn btn-one btn-outline-success" btnText="Add Item" />
-                                    <CustomButton customClasses="stock-btn btn-two btn-outline-danger" btnText="Clear" />
+                                    <CustomButton customClasses="stock-btn btn-one btn-outline-success" btnText="Add Item"  isSmall = "true"/>
+                                    <CustomButton customClasses="stock-btn btn-two btn-outline-danger" btnText="Clear"  isSmall = "true"/>
                                 </div>
                             </div>
                         </div>
