@@ -9,15 +9,50 @@ import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { isEmail, isRequired, isName } from '../../config/validation.config';
 import { UserService } from '../../services/user.service';
+import { CustomSelectBox } from '../../components/common/forms/custom-select-box';
 
 
 const SignUp = () => {
 
-    const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
+    const initObject = {
+        firstName: '',
+        lastName: '',
+        userId: '',
+        userType: '',
+        password: '',
+        confirmPassword: '',
+    };
+
+
+    const [form, setForm] = useState(initObject);
+    const [errors, setErrors] = useState(initObject);
+
     const [userService, setuserService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
 
+    const [userTypeList, setOptionList1] = useState([{ id: 'Admin', name: 'Admin' },
+    { id: 'Customer', name: 'Customer' }, { id: 'Seller', name: 'Seller' }]);
+
+
+    const handleChange = (name, value) => {
+        setForm(pre => {
+            console.log("ss", value)
+            return {
+                ...pre,
+                [name]: value
+            }
+        })
+    }
+
+    const setErrorCustom = (name, value) => {
+        setErrors(pre => {
+            return {
+                ...pre,
+                [name]: value
+            }
+        });
+    }
 
     useEffect(() => {
         setuserService(new UserService(setLoader, setAlert, setAuth));
@@ -25,9 +60,8 @@ const SignUp = () => {
 
 
     const onSubmit = async () => {
-        await userService.signup(form.fName, form.lName, form.email, form.password);
+        await userService.signup(form.fName, form.lName, form.userId, form.password);
     }
-
 
     return <div className='register-form-main'>
         <CustomForm
@@ -37,9 +71,11 @@ const SignUp = () => {
             errors={errors}
         >
             <div className="card register-card-style">
+
                 <div className="card-header register-card-header">
                     <h3 className="card-title">SignUp</h3>
                 </div>
+
                 <div className='card-body'>
                     <div className="register-form-inputs">
                         <CustomInput
@@ -49,7 +85,7 @@ const SignUp = () => {
                             label="First Name"
                             type="text"
                             value={form.fName}
-                            onChange={setFormCustom}
+                            onChange={handleChange}
                             errorMsg={errors.fName}
                             setError={setErrorCustom}
                             validations={[isRequired, isName]}
@@ -66,7 +102,7 @@ const SignUp = () => {
                             label="Last Name"
                             type="text"
                             value={form.lName}
-                            onChange={setFormCustom}
+                            onChange={handleChange}
                             errorMsg={errors.lName}
                             setError={setErrorCustom}
                             validations={[isRequired, isName]}
@@ -76,21 +112,35 @@ const SignUp = () => {
                     </div>
 
                     <div className="register-form-inputs">
+                        <CustomSelectBox
+                            title={"User Type"}
+                            value={form.userType}
+                            name="userType"
+                            data={[{ name: "Select Your user Type", id: '' }, ...userTypeList]}
+                            valueKey="name"
+                            onChange={(val) => { handleChange("userType", val) }}
+                            setError={setErrorCustom}
+                            isRequiredFlag={true}
+                        />
+                    </div>
+
+                    <div className="register-form-inputs">
                         <CustomInput
                             className="cust-input"
-                            placeholder="Enter email"
-                            name="email"
-                            label="Email"
-                            type="email"
-                            value={form.email}
-                            onChange={setFormCustom}
-                            errorMsg={errors.email}
+                            placeholder="Enter userId"
+                            name="userId"
+                            label="userId"
+                            type="userId"
+                            value={form.userId}
+                            onChange={handleChange}
+                            errorMsg={errors.userId}
                             setError={setErrorCustom}
-                            validations={[isRequired, isEmail]}
+                            validations={[isRequired]}
                             maxLength={320}
                             disabled={false}
                         />
                     </div>
+
                     <div className="register-form-inputs">
                         <CustomInput
                             className="cust-input"
@@ -99,13 +149,31 @@ const SignUp = () => {
                             label="Password"
                             type="password"
                             value={form.password}
-                            onChange={setFormCustom}
+                            onChange={handleChange}
                             errorMsg={errors.password}
                             setError={setErrorCustom}
                             validations={[isRequired]}
                             password={50}
                         />
                     </div>
+
+
+                    <div className="register-form-inputs">
+                        <CustomInput
+                            className="cust-input"
+                            placeholder="Enter confirm password"
+                            name="confirmPassword"
+                            label="Confirm Password"
+                            type="confirmPassword"
+                            value={form.confirmPassword}
+                            onChange={handleChange}
+                            errorMsg={errors.confirmPassword}
+                            setError={setErrorCustom}
+                            validations={[isRequired]}
+                            password={50}
+                        />
+                    </div>
+
                 </div>
 
                 <div className="card-footer register-card-footer">
@@ -117,10 +185,7 @@ const SignUp = () => {
                     <div className='login-link'>
                         <p>If you have an Account  <Link to="/signin">SignIn</Link> </p>
                     </div>
-
                 </div>
-
-
 
             </div>
 

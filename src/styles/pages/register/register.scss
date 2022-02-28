@@ -2,14 +2,11 @@
   background: linear-gradient(rgba(0, 0, 0, 0.226), rgba(0, 0, 0, 0.233));
   width: 100%;
   height: calc(100vh - 50px);
-  background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   display: flex;
 
   .register-form-card {
     width: 40vw;
-    height: 400px;
     border-radius: 5px;
     margin: auto;
     padding: 40px;
