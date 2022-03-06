@@ -27,9 +27,21 @@ const StockOverview = () => {
         setItemName("");
         setItemNo("");
     }
-    const handleChange = e => {
+    const CategoryHandleChange = e => {
         setCategory(e.target.value);
     };
+
+    const ItemNoHandleChange = e => {
+        setItemNo(e.target.value);
+    };
+
+    const ItemNameHandleChange = e => {
+        setItemName(e.target.value);
+    };
+
+    const searchData = () => {
+        
+    }
 
     return (
         <div className="stock-overview-page">
@@ -43,7 +55,7 @@ const StockOverview = () => {
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Category</p>
-                                        <input type="text" onChange={handleChange} value={category} name="category" list="categoryList" className="form-control dropdown form-control-sm" />
+                                        <input type="text" onChange={CategoryHandleChange} value={category} name="category" list="categoryList" className="form-control dropdown form-control-sm" />
                                         <datalist id="categoryList">
                                             <option value="pen">Paint</option>
                                             <option value="pencil">Pencil</option>
@@ -52,17 +64,17 @@ const StockOverview = () => {
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Item No</p>
-                                        <input type="text" name="itemNo" list="categoryList" className="form-control dropdown form-control-sm" />
-                                        <datalist id="categoryList">
-                                            <option value="pen">Pen</option>
-                                            <option value="pencil">Pencil</option>
-                                            <option value="paper">Paper</option>
+                                        <input type="text" onChange={ItemNoHandleChange} value={itemNo} name="itemNo" list="itemNoList" className="form-control dropdown form-control-sm" />
+                                        <datalist id="itemNoList">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </datalist>
                                     </div>
                                     <div className="col-md-8">
                                         <p className="field-title">Item Name</p>
-                                        <input type="text" name="itemName" list="categoryList" className="form-control dropdown form-control-sm" />
-                                        <datalist id="categoryList">
+                                        <input type="text" onChange={ItemNameHandleChange} value={itemName} name="itemName" list="itemNameList" className="form-control dropdown form-control-sm" />
+                                        <datalist id="itemNameList">
                                             <option value="pen">Pen</option>
                                             <option value="pencil">Pencil</option>
                                             <option value="paper">Paper</option>
@@ -74,7 +86,7 @@ const StockOverview = () => {
                         <div className="card-footer text-muted">
                             <div className="row">
                                 <div className="col">
-                                    <CustomButton customClasses="stock-btn btn-one btn-outline-primary" btnText="Search" isSmall="true" />
+                                    <CustomButton customClasses="stock-btn btn-one btn-outline-primary" btnText="Search" isSmall="true" onClick={searchData} />
                                     <CustomButton customClasses="stock-btn btn-three btn-outline-primary" btnText="Scan Code" isSmall="true" />
                                     <CustomButton customClasses="stock-btn btn-two btn-outline-danger" btnText="Clear" isSmall="true" onClick={clearData} />
                                 </div>
