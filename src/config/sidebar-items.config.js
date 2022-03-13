@@ -36,6 +36,12 @@ const SideBarItems = [
         link: "/quotation",
         allowed: [userTypes.Admin],
     },
+    {
+        icon: RiBillFill,
+        displayName: "Billing",
+        link: "/billing",
+        allowed: [userTypes.Admin],
+    },
 
 ];
 
