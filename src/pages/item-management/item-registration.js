@@ -62,7 +62,6 @@ const ItemRegistration = () => {
                                             <option value="paper">Paper</option>
                                         </datalist>
                                     </div>
-                                    
                                 </div>
                                 <div className="row">
                                     <div className="col">
