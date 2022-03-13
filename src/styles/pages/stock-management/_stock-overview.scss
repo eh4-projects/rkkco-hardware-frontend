@@ -3,7 +3,7 @@
         .stock-topic {
             font-size: 25px;
             font-weight: 500;
-            margin-top: 2vh;
+            margin-top: 9vh;
         }
     }
     .stock-update-form {
@@ -27,7 +27,7 @@
         width: 150px;
     }
     .btn-one {
-        color: green;
+        color: rgb(0, 110, 255);
     }
     .btn-two {
         color: red;
@@ -40,7 +40,39 @@
         margin-top: 20px;
         margin-bottom: 30px;
     }
-    .pagination-div{
+    .pagination-div {
+        margin-top: -38px;
         margin-bottom: -15px;
+    }
+
+    .k-pdf-export {
+        .card-header {
+            display: none;
+        }
+        .list-header {
+            display: block;
+            .pdf-header {
+                margin: auto;
+                color: black;
+                font-size: 20px;
+                font-weight: 500;
+                text-align: center;
+                text-decoration: underline;
+            }
+        }
+        .stock-table-header th {
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .stock-table-body th {
+            font-size: 12px;
+        }
+        .stock-table-body td {
+            font-size: 12px;
+        }
+    }
+
+    .list-header {
+        display: none;
     }
 }

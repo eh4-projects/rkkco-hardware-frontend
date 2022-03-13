@@ -163,7 +163,7 @@ const CustomInput = ({
                 name={name}
                 type={type}
                 disabled={disabled}
-                className={`form-control ${extraClasses} ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''}`}
+                className={`form-control form-control-sm ${extraClasses} ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''}`}
                 placeholder={placeholder}
 
 

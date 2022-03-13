@@ -25,7 +25,7 @@ const AuthRoute = ({
               (isAllowed(allowed, auth.userType)
                 ? <div className={(isSidebar ? "main-router-auth" : 'main-router-non-auth')}>
                   {isSidebar ? <Sidebar /> : null}
-                  <Component {...props} />
+                  <Component {...props} className="base-component"/>
                 </div>
                 : <PageNotFound />) :
               <Redirect to={{
