@@ -4,6 +4,11 @@ import { CustomButton } from '../../components/common/forms/custom-btn';
 
 
 const BillingHome = () => {
+    const initObject = {
+        total: 0.00,
+        cash: 0.00,
+        tatolBalance: 0.00
+    }
     return (
         <div className="billing-home">
             <div className="container-fluid">
@@ -16,7 +21,7 @@ const BillingHome = () => {
                                 <div className="row">
                                     <div className="col-md-2">
                                         <p className="field-title">Category</p>
-                                        <input type="text" name="category" list="categoryList" className="form-control-sm dropdown" />
+                                        <input type="text" name="category" list="categoryList" className="form-control dropdown" />
                                         <datalist id="categoryList">
                                             <option value="pen">Paint</option>
                                             <option value="pencil">Pencil</option>
@@ -25,7 +30,7 @@ const BillingHome = () => {
                                     </div>
                                     <div className="col-md-2">
                                         <p className="field-title">Item No</p>
-                                        <input type="text" name="category" list="categoryList" className="form-control-sm dropdown" />
+                                        <input type="text" name="category" list="categoryList" className="form-control dropdown" />
                                         <datalist id="categoryList">
                                             <option value="pen">Pen</option>
                                             <option value="pencil">Pencil</option>
@@ -34,7 +39,7 @@ const BillingHome = () => {
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Item Name</p>
-                                        <input type="text" name="category" list="categoryList" className="form-control-sm dropdown" />
+                                        <input type="text" name="category" list="categoryList" className="form-control dropdown" />
                                         <datalist id="categoryList">
                                             <option value="pen">Pen</option>
                                             <option value="pencil">Pencil</option>
@@ -43,11 +48,11 @@ const BillingHome = () => {
                                     </div>
                                     <div className="col-md-1">
                                         <p className="field-title">Quentity</p>
-                                        <input type="text" name="category" className="form-control-sm dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown" />
                                     </div>
                                     <div className="col-md-2">
                                         <p className="field-title">Price</p>
-                                        <input type="text" name="category" className="form-control-sm dropdown" />
+                                        <input type="text" name="category" className="form-control dropdown" />
                                     </div>
                                 </div>
                             </form>
@@ -55,8 +60,8 @@ const BillingHome = () => {
                         <div className="card-footer text-muted">
                             <div className="row btn-group">
                                 <div className="col">
-                                    <CustomButton customClasses="billing-btn btn-one btn-outline-success btn-sm" btnText="Add Item" />
-                                    <CustomButton customClasses="billing-btn btn-three btn-outline-primary btn-sm" btnText="Scan Code" />
+                                    <CustomButton customClasses="billing-btn btn-one btn-outline-success" btnText="Add Item" isSmall="true" />
+                                    <CustomButton customClasses="billing-btn btn-three btn-outline-primary" btnText="Scan Code" isSmall="true" />
                                 </div>
                             </div>
                         </div>
@@ -90,21 +95,30 @@ const BillingHome = () => {
                                 <div className="col-md-8">
                                 </div>
                                 <div className="col-md-2">
-                                    <p className="field-title">Total</p>
+                                    <p className="field-title-billing">Total</p>
                                 </div>
                                 <div className="col-md-2">
-                                    <p className="field-title">2378493.39</p>
+                                    <p className="field-title-billing-value">23,493.39</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-6">
-                                </div>
-                                <div className="col-md-1">
-                                    <p className="field-title">Total</p>
+                                <div className="col-md-8">
                                 </div>
                                 <div className="col-md-2">
-                                    <p className="field-title">Price</p>
-                                    <input type="text" name="category" className="form-control dropdown" />
+                                    <p className="field-title-billing">Cash</p>
+                                </div>
+                                <div className="col-md-2">
+                                    <input type="text" name="category" className="form-control field-title-billing-value-input" defaultValue="0.00" />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-8">
+                                </div>
+                                <div className="col-md-2">
+                                    <p className="field-title-billing">Balance</p>
+                                </div>
+                                <div className="col-md-2">
+                                    <p className="field-title-billing-value" name="tatolBalance" value={tatolBalance}>500,00.00</p>
                                 </div>
                             </div>
                         </div>
