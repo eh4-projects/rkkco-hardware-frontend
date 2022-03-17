@@ -12,17 +12,21 @@ const DailyReports = () => {
     function handleStartDateChange(e) {
         e.preventDefault();
         setStartDate(e.target.value);
+        setDailyDate("")
     };
 
 
     function handleEndDateChange(e) {
         e.preventDefault();
         setEndDate(e.target.value);
+        setDailyDate("")
     };
 
     function handleDailyDateChange(e) {
         e.preventDefault();
         setDailyDate(e.target.value);
+        setStartDate("")
+        setEndDate("")
     };
 
     function hadleClick() {
@@ -34,7 +38,6 @@ const DailyReports = () => {
     }
 
     function hadleClickDaily() {
-        console.log("kjndc", dailyDate);
         if (dailyDate) {
             setData(true)
         } else {
@@ -57,13 +60,17 @@ const DailyReports = () => {
                                 <label>Slect Date Range</label>
                             </div>
                             <div className='d-flex'>
-                                <div className='time-select-left'>
-                                    <label className='label-from'>From</label>
-                                    <input type="date" onChange={handleStartDateChange} />
-                                </div>
-                                <div className='time-select-right'>
-                                    <label className='label-to'>To</label>
-                                    <input type="date" onChange={handleEndDateChange} />
+                                <div className='card time-select-card'>
+                                    <div className='d-flex'>
+                                        <div className='time-select-left'>
+                                            <label className='label-from'>From</label>
+                                            <input type="date" value={startDate} onChange={handleStartDateChange} />
+                                        </div>
+                                        <div className='time-select-right'>
+                                            <label className='label-to'>To</label>
+                                            <input type="date" value={endDate} onChange={handleEndDateChange} />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className='search-btn'>
                                     <button className='btn btn-primary btn-sm' onClick={hadleClick}>Search</button>
@@ -73,11 +80,13 @@ const DailyReports = () => {
 
                         <div className='col-md-6'>
                             <div className='slect-date-rage-title'>
-                                <label>Slect Date</label>
+                                <label>Slect Date for daily report</label>
                             </div>
                             <div className='d-flex'>
-                                <div className='time-select-left'>
-                                    <input type="date" onChange={handleDailyDateChange} />
+                                <div className='card time-select-card'>
+                                    <div className='time-select-left'>
+                                        <input type="date" value={dailyDate} onChange={handleDailyDateChange} />
+                                    </div>
                                 </div>
                                 <div className='search-btn'>
                                     <button className='btn btn-primary btn-sm' onClick={hadleClickDaily}>Search</button>

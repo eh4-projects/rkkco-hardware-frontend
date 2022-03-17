@@ -28,7 +28,7 @@ const MainRouter = () => {
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
-        <NonAuthRoute path="/daily-report" exact={true} component={DailyReports} />
+        <NonAuthRoute path="/daily-report" isSidebar={true} exact={true} component={DailyReports} />
       </Switch>
     </div>
   );
