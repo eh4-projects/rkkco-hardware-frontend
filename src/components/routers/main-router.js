@@ -11,12 +11,9 @@ import { Quotation } from '../../pages/quotation/quotation';
 import { ItemRegistration } from '../../pages/item-management/item-registration';
 import { UpdateStock } from '../../pages/stock-management/update-stock';
 import { StockOverview } from '../../pages/stock-management/stock-overview';
-<<<<<<< HEAD
 import { DailyReports } from '../../pages/daily-reports/daily-reports';
 
-=======
 import { HomeLobby } from '../../pages/home/home-lobby';
->>>>>>> main
 
 const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
