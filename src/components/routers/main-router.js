@@ -11,14 +11,19 @@ import { Quotation } from '../../pages/quotation/quotation';
 import { ItemRegistration } from '../../pages/item-management/item-registration';
 import { UpdateStock } from '../../pages/stock-management/update-stock';
 import { StockOverview } from '../../pages/stock-management/stock-overview';
+<<<<<<< HEAD
 import { DailyReports } from '../../pages/daily-reports/daily-reports';
 
+=======
+import { HomeLobby } from '../../pages/home/home-lobby';
+>>>>>>> main
 
 const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
   return (
     <div >
       <Switch>
+        <Route exact={true} path="/home" component={HomeLobby} />
         <Route exact={true} path="/" component={() => <Redirect to={{ pathname: '/signin' }} />} />
         <NonAuthRoute path="/signin" exact={true} component={SignIn} />
         <AuthRoute path="/dashboard" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Dashboard} />
