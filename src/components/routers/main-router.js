@@ -21,13 +21,12 @@ const MainRouter = () => {
       <Switch>
         <Route exact={true} path="/" component={() => <Redirect to={{ pathname: '/signin' }} />} />
         <NonAuthRoute path="/signin" exact={true} component={SignIn} />
-
         <AuthRoute path="/dashboard" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Dashboard} />
-        <AuthRoute path="/stock-overview" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={StockOverview} />
+        <NonAuthRoute path="/stock-overview" isSidebar={true} exact={true} component={StockOverview} />
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
-        <NonAuthRoute path="/daily-report" isSidebar={true} exact={true} component={DailyReports} />
+        <NonAuthRoute path="/daily-report" exact={true} component={DailyReports} />
       </Switch>
     </div>
   );
