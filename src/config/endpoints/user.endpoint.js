@@ -1,5 +1,5 @@
 const userRegister=`users`;
-const userLogin=`users/login`;
+const userLogin=`auth/signin`;
 const getCountries=`countries`;
 const getUserProfileDetails=`users/user-profile`;
 const updateUserProfile=`users/update-user-profile`;
