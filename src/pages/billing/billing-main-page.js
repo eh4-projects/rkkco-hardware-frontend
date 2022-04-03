@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { CustomButton } from '../../components/common/forms/custom-btn';
 
-
 const BillingHome = () => {
+    let barcodeScankey = 'F4', addItemKey = 'Insert';
+
     const initObject = {
         index: 0,
         category: '',
@@ -14,7 +15,7 @@ const BillingHome = () => {
     const [totalPrice, setTotalPrice] = useState('0.00');
     const [form, setForm] = useState(initObject);
     const [inputItemList, setInputItemList] = useState([]);
-    const [cash, setCash] = useState(0.00);
+    const [cash, setCash] = useState('0.00');
     const [cashBalance, setCashBalance] = useState('0.00');
 
     const handleChange = (e) => {
@@ -31,8 +32,8 @@ const BillingHome = () => {
         let tempArray = { ...inputItemList };
         form.price = form.quantity * 100;
 
-        if (form.category === null || form.itemNo === null || form.itemName === null || form.quantity === null || form.quantity === 0 || form.price === null || form.price === 0) {
-            alert("Please select a category!")
+        if (form.category === null || form.itemNo === null || form.itemName === null || form.quantity === null || form.quantity === 0 || form.quantity <= 0 || form.price === null || form.price === 0) {
+            alert(form.category)
         }
         else {
             if (tempArray[itemNo] === undefined) {
@@ -44,7 +45,6 @@ const BillingHome = () => {
                     quantity: form.quantity,
                     price: parseFloat(form.price.toFixed(2))
                 }
-                calculateTotal(form.price);
             }
             else {
                 tempArray[itemNo] = {
@@ -52,29 +52,58 @@ const BillingHome = () => {
                     quantity: parseInt(tempArray[itemNo].quantity) + parseInt(form.quantity),
                     price: tempArray[itemNo].price + parseFloat(form.price.toFixed(2))
                 }
-                calculateTotal(form.price)
             }
             setInputItemList(tempArray);
             setForm(initObject);
+            setTotalPrice(pre => {
+                return (parseFloat(pre) + parseFloat(form.price)).toFixed(2)
+            })
         }
-        calculateCashBalance(cash, form.price);
     }
 
-    const calculateTotal = (val) => {
-        setTotalPrice(pre => {
-            return (parseInt(pre) + val).toFixed(2);
+    useEffect(() => {
+        setCashBalance(pre => {
+            return (parseFloat(cash).toFixed(2) - parseFloat(totalPrice).toFixed(2)).toFixed(2)
         })
-    }
-
-    const calculateCashBalance = (val, price) => {
-        setCashBalance((parseFloat(val) - parseFloat(totalPrice) - parseFloat(price)).toFixed(2));
-    }
+    }, [cash, totalPrice, cashBalance]);
 
     const setCachBalanceChange = (e) => {
         setCash(e.target.value)
         setCashBalance(pre => {
             return (parseFloat(e.target.value) - parseFloat(totalPrice)).toFixed(2);
         })
+    }
+    
+
+    const deleteItem = async (itemNo) => {
+        let tempArray = { ...inputItemList };
+        await setTotalPrice(pre => (parseFloat(pre) - parseFloat(tempArray[itemNo].price)).toFixed(2))
+        delete tempArray[itemNo];
+        setInputItemList(tempArray)
+    }
+
+    const scanBarcode = (barcode) => {
+        alert('Scan Barcode')
+    }
+    const handleKeyPress = useCallback((event) => {
+        if (event.key === barcodeScankey) {
+            scanBarcode(event.key)
+        }
+        if (event.key === addItemKey) {
+            addItem(form.itemNo)
+        }
+    }, []);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [handleKeyPress]);
+
+
+    const submitOrder = () => {
+        console.log("Submit order!");
     }
 
     return (
@@ -129,7 +158,7 @@ const BillingHome = () => {
                             <div className="row">
                                 <div className="col">
                                     <CustomButton customClasses="billing-btn btn-one btn-outline-success" btnText="Add Item" isSmall="true" onClick={() => addItem(form.itemNo)} />
-                                    <CustomButton customClasses="billing-btn btn-three btn-outline-primary" btnText="Scan Code" isSmall="true" />
+                                    <CustomButton customClasses="billing-btn btn-three btn-outline-primary" btnText="Scan Code (F4)" isSmall="true" onClick={() => scanBarcode(form.itemCode)} />
                                 </div>
                             </div>
                         </div>
@@ -146,6 +175,7 @@ const BillingHome = () => {
                                         <th scope="col">Brand</th>
                                         <th scope="col" style={{ textAlign: 'center' }}>Quantity</th>
                                         <th scope="col" style={{ textAlign: 'center' }}>Price</th>
+                                        <th scope="col" style={{ textAlign: 'right' }}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -159,6 +189,9 @@ const BillingHome = () => {
                                                 <td>{item.brand}</td>
                                                 <td style={{ textAlign: 'center' }}>{item.quantity}</td>
                                                 <td style={{ textAlign: 'right' }}>{item.price}</td>
+                                                <td style={{ textAlign: 'right' }}>
+                                                    <CustomButton customClasses="btn-two btn-outline-danger" btnText="Delete" isSmall="true" onClick={() => deleteItem(item.itemNo)} />
+                                                </td>
                                             </tr>
                                         )
                                     })}
@@ -193,7 +226,16 @@ const BillingHome = () => {
                                     <p className="field-title-billing">Balance</p>
                                 </div>
                                 <div className="col-md-2">
-                                    <p className="field-title-billing-value" name="tatolBalance" >{cashBalance}</p>
+                                    <p className="field-title-billing-value" name="totalBalance" >{cashBalance}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-8">
+                                </div>
+                                <div className="col-md-2">
+                                </div>
+                                <div className="col-md-2" style={{ display: 'block' }}>
+                                    <CustomButton customClasses="billing-btn btn-print-bill btn-outline-success" btnText="Print Bill" isSmall="true" onClick={() => submitOrder()} />
                                 </div>
                             </div>
                         </div>
