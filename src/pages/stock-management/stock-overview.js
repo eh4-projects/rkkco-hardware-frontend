@@ -130,7 +130,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-success">Available</span>
+                                                <span className="badge bg-success">Available</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -141,7 +141,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-danger">Unavailable</span>
+                                                <span className="badge bg-danger">Unavailable</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -152,7 +152,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -163,7 +163,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-success">Available</span>
+                                                <span className="badge bg-success">Available</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -174,7 +174,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-danger">Unavailable</span>
+                                                <span className="badge bg-danger">Unavailable</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -185,7 +185,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -196,7 +196,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-success">Available</span>
+                                                <span className="badge bg-success">Available</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -207,7 +207,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-danger">Unavailable</span>
+                                                <span className="badge bg-danger">Unavailable</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -218,7 +218,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -229,7 +229,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -240,7 +240,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -251,7 +251,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -262,7 +262,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -273,7 +273,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -284,7 +284,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -295,7 +295,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -306,7 +306,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -317,7 +317,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -328,7 +328,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -339,7 +339,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -350,7 +350,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -361,7 +361,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -372,7 +372,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -383,7 +383,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -394,7 +394,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -405,7 +405,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -416,7 +416,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -427,7 +427,7 @@ const StockOverview = () => {
                                             <td>239.00</td>
                                             <td>374.00</td>
                                             <td>
-                                                <span class="badge bg-warning">Warning</span>
+                                                <span className="badge bg-warning">Warning</span>
                                             </td>
                                         </tr>
                                     </tbody>
