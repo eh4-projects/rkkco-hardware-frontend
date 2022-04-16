@@ -1,10 +1,10 @@
 const errorInitObject={
-    email:"",
+    userName:"",
     password:""
 }
 
 const formInitObject={
-    email:"",
+    userName:"",
     password:""
 }
 

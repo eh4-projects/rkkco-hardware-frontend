@@ -17,7 +17,7 @@ const SignIn = () => {
     const { setLoader, setAlert } = useContext(UIContextAPI);
 
     const onSubmit = async () => {
-        await userService.signin(form.email, form.password);
+        await userService.signin(form.userName, form.password);
     };
     useEffect(() => {
         setuserService(new UserService(setLoader, setAlert, setAuth));
@@ -40,14 +40,14 @@ const SignIn = () => {
                             <CustomInput
                                 className="cust-input"
                                 placeholder="RKK00001"
-                                name="email"
+                                name="userName"
                                 label="User ID"
                                 type="text"
-                                value={form.email}
+                                value={form.userName}
                                 onChange={setFormCustom}
-                                errorMsg={errors.email}
+                                errorMsg={errors.userName}
                                 setError={setErrorCustom}
-                                validations={[isRequired, isEmail]}
+                                validations={[isRequired]}
                                 maxLength={320}
                                 disabled={false}
                             />
