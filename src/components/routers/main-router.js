@@ -14,6 +14,7 @@ import { StockOverview } from '../../pages/stock-management/stock-overview';
 import { DailyReports } from '../../pages/daily-reports/daily-reports';
 
 import { HomeLobby } from '../../pages/home/home-lobby';
+import { BillingHome } from '../../pages/billing/billing-main-page'
 
 const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
@@ -29,6 +30,7 @@ const MainRouter = () => {
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
         <NonAuthRoute path="/daily-report" isSidebar={true} exact={true} component={DailyReports} />
+        <AuthRoute path="/billing" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={BillingHome} />
       </Switch>
     </div>
   );
