@@ -12,9 +12,9 @@ import { ItemRegistration } from '../../pages/item-management/item-registration'
 import { UpdateStock } from '../../pages/stock-management/update-stock';
 import { StockOverview } from '../../pages/stock-management/stock-overview';
 import { DailyReports } from '../../pages/daily-reports/daily-reports';
-
 import { HomeLobby } from '../../pages/home/home-lobby';
-import { BillingHome } from '../../pages/billing/billing-main-page'
+import { BillingHome } from '../../pages/billing/billing-main-page';
+import { ItemBrandRegistration } from '../../pages/item-brand-registration/item-brand-registration';
 
 const MainRouter = () => {
   const { auth } = useContext(AuthContextAPI);
@@ -29,8 +29,9 @@ const MainRouter = () => {
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
-        <AuthRoute path="/daily-report" isSidebar={true} exact={true} allowed={[userTypes.Admin]} component={DailyReports} />
+        <AuthRoute path="/daily-reports" isSidebar={true} exact={true} allowed={[userTypes.Admin]} component={DailyReports} />
         <AuthRoute path="/billing" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={BillingHome} />
+        <AuthRoute path="/item-brand-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemBrandRegistration} />
       </Switch>
     </div>
   );

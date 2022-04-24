@@ -48,6 +48,12 @@ const SideBarItems = [
         link: "/daily-reports",
         allowed: [userTypes.Admin],
     },
+    {
+        icon: RiBillFill,
+        displayName: "Brand Registraion",
+        link: "/item-brand-registration",
+        allowed: [userTypes.Admin],
+    },
 
 ];
 
