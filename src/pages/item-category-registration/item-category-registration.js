@@ -29,6 +29,34 @@ const ItemCategoryRegistration = () => {
         setcatergoryService(new CatergoryItemService(setLoader, setAlert, setAuth));
     }, []);
 
+    useEffect(() => {
+        if (catergoryService) {
+            let data = catergoryService.getCategory(setcatergoryService)
+            console.log("KMK", data);
+        }
+    }, [catergoryService]);
+
+
+    const reportsData = [{
+        itemNumber: "1",
+        name: "TEST 1",
+
+    },
+    {
+        itemNumber: "2",
+        name: "TEST 2",
+
+    },
+    {
+        itemNumber: "3",
+        name: "TEST 3",
+
+    },
+    {
+        itemNumber: "4",
+        name: "TEST 4",
+
+    }]
 
     return (
         <div className='item-catergory-reg-home'>
@@ -71,6 +99,22 @@ const ItemCategoryRegistration = () => {
                 <div className='card item-catergory-list'>
                     <div className='card-header'>Catergory Item List</div>
                     <div className='card-body'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Number</th>
+                                    <th scope="col">Catergory Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {reportsData.map(item => (
+                                    <tr>
+                                        <th scope="row">{item.itemNumber}</th>
+                                        <td>{item.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>

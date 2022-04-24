@@ -35,6 +35,28 @@ class CatergoryItemService {
             this.setAlert('Failed', 'Something Went Wrong', 'error');
         })
     }
+
+    getCategory(setcatergoryService) {
+        this.setLoader(true);
+        apiRequest(categoryApi, 'GET').then(axioResponse => {
+            console.log("llll", axioResponse)
+            this.setLoader(false);
+            console.log("KKK", axioResponse.data)
+            if (axioResponse && axioResponse.data && (axioResponse.data.length > 0)) {
+                console.log("KKjnjknK", axioResponse.data)
+                setcatergoryService(axioResponse.data.data.map(e => {
+                    console.log("Aaa", e.category)
+                    return {
+                        name: e.category,
+                        id: e.id
+                    }
+                }))
+
+            }
+        }).catch(axioError => {
+            this.setLoader(false);
+        })
+    }
 }
 
 export { CatergoryItemService };
