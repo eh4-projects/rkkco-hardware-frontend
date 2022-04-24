@@ -29,7 +29,7 @@ const MainRouter = () => {
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
-        <NonAuthRoute path="/daily-report" isSidebar={true} exact={true} component={DailyReports} />
+        <AuthRoute path="/daily-report" isSidebar={true} exact={true} allowed={[userTypes.Admin]} component={DailyReports} />
         <AuthRoute path="/billing" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={BillingHome} />
       </Switch>
     </div>

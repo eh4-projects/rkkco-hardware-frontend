@@ -42,6 +42,12 @@ const SideBarItems = [
         link: "/billing",
         allowed: [userTypes.Admin],
     },
+    {
+        icon: RiBillFill,
+        displayName: "Daily Reports",
+        link: "/daily-reports",
+        allowed: [userTypes.Admin],
+    },
 
 ];
 
