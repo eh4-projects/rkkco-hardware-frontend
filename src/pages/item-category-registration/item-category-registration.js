@@ -8,35 +8,36 @@ import { errorInitObject, formInitObject } from '../../form-init-object/login.in
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { isRequired } from '../../config/validation.config';
-import { BrandItemService } from '../../services/brand.service';
+import { CatergoryItemService } from '../../services/category.service';
 
-const ItemBrandRegistration = () => {
+
+const ItemCategoryRegistration = () => {
 
     const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
-    const [brandService, setbrandService] = useState(undefined);
+    const [catergoryService, setcatergoryService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
 
     const onSubmit = async () => {
-        await brandService.addBrand(form.brandName, () => {
-            setFormCustom("brandName", '');
-            setErrorCustom("brandName", '');
+        await catergoryService.addCategory(form.catergoryName, () => {
+            setFormCustom("catergoryName", '');
+            setErrorCustom("catergoryName", '');
         });
     };
 
     useEffect(() => {
-        setbrandService(new BrandItemService(setLoader, setAlert, setAuth));
+        setcatergoryService(new CatergoryItemService(setLoader, setAlert, setAuth));
     }, []);
 
 
     return (
-        <div className='item-brand-reg-home'>
+        <div className='item-catergory-reg-home'>
             <div className='container-fluid'>
-                <div className='item-brand-reg-title'>
-                    <h2 className='item-title'>Item Brand Registration</h2>
+                <div className='item-catergory-reg-title'>
+                    <h2 className='item-title'>Item Catergory Registration</h2>
                 </div>
-                <div className=' card item-brand-reg-content'>
-                    <div className='card-header'>Add New Brand Item</div>
+                <div className=' card item-catergory-reg-content'>
+                    <div className='card-header'>Add New Catergory Item</div>
                     <div className="card-body">
                         <div className='row'>
                             <CustomForm
@@ -46,13 +47,13 @@ const ItemBrandRegistration = () => {
                                 errors={errors}>
                                 <CustomInput
                                     className="cust-input"
-                                    placeholder="Add Brand"
-                                    name="brandName"
-                                    label="Brand Item Name"
+                                    placeholder="Add Catergory"
+                                    name="catergoryName"
+                                    label="Catergory Item Name"
                                     type="text"
-                                    value={form.brandName}
+                                    value={form.catergoryName}
                                     onChange={setFormCustom}
-                                    errorMsg={errors.brandName}
+                                    errorMsg={errors.catergoryName}
                                     setError={setErrorCustom}
                                     validations={[isRequired]}
                                     maxLength={320}
@@ -60,15 +61,15 @@ const ItemBrandRegistration = () => {
                                 />
                                 <CustomButton
                                     btnType="submit"
-                                    btnText="Add Brand"
-                                    customClasses="btn btn-outline-primary item-brand-add-button"
+                                    btnText="Add Catergory"
+                                    customClasses="btn btn-outline-primary item-catergory-add-button"
                                 />
                             </CustomForm>
                         </div>
                     </div>
                 </div>
-                <div className='card item-brand-list'>
-                    <div className='card-header'>Brand Item List</div>
+                <div className='card item-catergory-list'>
+                    <div className='card-header'>Catergory Item List</div>
                     <div className='card-body'>
                     </div>
 
@@ -76,6 +77,7 @@ const ItemBrandRegistration = () => {
             </div>
         </div>
     )
+
 }
 
-export { ItemBrandRegistration };
+export { ItemCategoryRegistration };

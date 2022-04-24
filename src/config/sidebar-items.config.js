@@ -54,6 +54,12 @@ const SideBarItems = [
         link: "/item-brand-registration",
         allowed: [userTypes.Admin],
     },
+    {
+        icon: RiBillFill,
+        displayName: "Category Registraion",
+        link: "/item-category-registration",
+        allowed: [userTypes.Admin],
+    },
 
 ];
 
