@@ -20,12 +20,12 @@ const AuthRoute = ({
       render={(props) => {
         return (
           <Fragment>
-            <Navbar isTransparent={isTransparent} />
+            {/* <Navbar isTransparent={isTransparent} /> */}
             {auth.isLogged ?
               (isAllowed(allowed, auth.userType)
                 ? <div className={(isSidebar ? "main-router-auth" : 'main-router-non-auth')}>
                   {isSidebar ? <Sidebar /> : null}
-                  <Component {...props} className="base-component"/>
+                  <Component {...props} className="base-component" />
                 </div>
                 : <PageNotFound />) :
               <Redirect to={{
