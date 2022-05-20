@@ -1,13 +1,29 @@
 const errorInitObject={
-    name:"" ,
-    cnum:"",
-    email:"",
+    customerName:'',
+    customerNumber:'',
+    customerEmail:'',
+    inputItemList : [{
+        index: 0,
+        category: '',
+        itemNo: '',
+        itemName: '',
+        quantity: 0,
+        price: 0.00,
+    }],
 };
 
 const formInitObject={
-    name:"" ,
-    cnum:"",
-    email:"",
+    customerName:'',
+    customerNumber:'',
+    customerEmail:'',
+    inputItemList : [{
+        index: 0,
+        category: '',
+        itemNo: '',
+        itemName: '',
+        quantity: 0,
+        price: 0.00,
+    }],
 };
 
 export {errorInitObject,formInitObject};

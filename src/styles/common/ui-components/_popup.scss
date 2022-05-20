@@ -13,11 +13,11 @@
         
         justify-content: center;
         margin-top: 70px;
-        width: 40%;
+        width: 70%;
         max-height: 80vh;
         // min-height: 500px;
 
-        background-color: $backgroundColor;
+        background-color: rgba(19, 19, 19, 0.03);
         position: relative;
         border-radius: 5px;
         animation-name: popup-come;
@@ -25,12 +25,12 @@
         animation-fill-mode: forwards;
         overflow: auto;
         // text-align: center;
-        border-bottom: 5px solid $primaryColor;
+        border: 3px solid rgb(0, 110, 255);
 
         .popup-card-header {
             text-align: center;
             margin-top: 0px;
-            background: $primaryColor;
+            background: white;
             // background: radial-gradient(circle, rgb(90, 1, 1) 0%, $primaryColor 100%);
             min-height: 70px;
         }
@@ -43,6 +43,7 @@
             position: absolute;
             right: 10px;
             top: 10px;
+            color: rgb(87, 87, 87);
         }
         .popup-close-icon:hover {
             font-size: 18px;
@@ -52,7 +53,7 @@
         }
         .text {
             z-index: 1000;
-            color: white;
+            color: rgb(87, 87, 87);
             font-size: 28px;
             margin: 15px;
         }
