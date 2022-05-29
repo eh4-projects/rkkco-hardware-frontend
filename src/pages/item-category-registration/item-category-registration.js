@@ -32,7 +32,6 @@ const ItemCategoryRegistration = () => {
     useEffect(() => {
         if (catergoryService) {
             let data = catergoryService.getCategory(setcatergoryService)
-            console.log("KMK", data);
         }
     }, [catergoryService]);
 
