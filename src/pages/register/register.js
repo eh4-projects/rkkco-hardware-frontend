@@ -44,16 +44,6 @@ const SignUp = () => {
         })
     }
 
-    useEffect(() => {
-
-    }, [form.confirmPassword, form.confirmPassword]);
-
-
-    useEffect(() => {
-        setErrorCustom('confirmPassword', unTouched);
-        setuserService(new UserService(setLoader, setAlert, setAuth));
-    }, []);
-
     const setErrorCustom = (name, value) => {
         setErrors(pre => {
             return {
@@ -69,7 +59,6 @@ const SignUp = () => {
 
 
     const onSubmit = async () => {
-        console.log("KKKK")
         await userService.register(form, () => history.push("/"));
     }
 
