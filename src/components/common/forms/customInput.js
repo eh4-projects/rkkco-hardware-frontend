@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { isEmail, isRequired, isPassword, unTouched, isNumber, isPasswordMatch, isName ,isMaxLength } from '../../../config/validation.config'
+import { isEmail, isRequired, isPassword, unTouched, isNumber, isPasswordMatch, isName, isMaxLength } from '../../../config/validation.config'
 
 
 const CustomInput = ({
@@ -17,7 +17,7 @@ const CustomInput = ({
     hintTxt = "",
     validations = [],
     password = "",
-    maxLength=25,
+    maxLength = 25,
 }) => {
     const [localError, setLocalError] = useState("");
     useEffect(() => {
@@ -63,7 +63,7 @@ const CustomInput = ({
                 } else {
                     setLocalError(isNumber);
                 }
-            }else if (validations[i] === isPasswordMatch) {
+            } else if (validations[i] === isPasswordMatch) {
 
                 if (password !== value) {
                     setLocalError(isPasswordMatch);
@@ -89,7 +89,7 @@ const CustomInput = ({
                     setLocalError(isName);
                 }
 
-            }else if (validations[i] === isNumber) {
+            } else if (validations[i] === isNumber) {
                 let pattern = /^[a-z,.']{1,25}$/i;
                 if (pattern.test(value)) {
                     setLocalError(pre => {
@@ -115,17 +115,17 @@ const CustomInput = ({
                 }
             }
         }
-        if(value.length>maxLength){
+        if (value.length > maxLength) {
             setLocalError(isMaxLength)
-        }else{
-        setLocalError(pre=>{
-            if (pre === isMaxLength)
-                return ""
-            else
-                return pre;
+        } else {
+            setLocalError(pre => {
+                if (pre === isMaxLength)
+                    return ""
+                else
+                    return pre;
             })
         }
-    }, [value,password]);
+    }, [value, password]);
 
     useEffect(() => {
         setError(name, localError);
@@ -142,7 +142,7 @@ const CustomInput = ({
     useEffect(() => {
         let flag = true;
         for (let i in validations) {
-            if (validations[i] === isRequired && value==="") {
+            if (validations[i] === isRequired && value === "") {
                 setLocalError(unTouched);
                 flag = false;
             }
@@ -154,9 +154,9 @@ const CustomInput = ({
 
     return (
         <div className={`form-group text-left ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''} ${extraClassesWrapper}`}>
-            {label?<label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''}`}>
+            {label ? <label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''}`}>
                 {label}
-            </label>:null}
+            </label> : null}
             <input
                 onChange={(e) => { onChange(e.target.name, e.target.value, e) }}
                 value={value}

@@ -1,6 +1,6 @@
 import {
     // userLogin,
-    // userRegister,
+    userRegister,
     // getCountries,
     // getUserProfileDetails,
     // updateUserProfile,
@@ -27,28 +27,27 @@ class UserService {
         this.setLoader = setLoader
     }
 
-    
+
+    register(data, cb = () => undefined) {
+        console.log("KKK", data)
+        // this.setLoader(true);
+        // data.userType = userTypes.Guest;
+        // apiRequest(userRegister, 'POST', data).then(axioResponse => {
+        //     if (axioResponse.data.status) {
+        //         this.setLoader(false);
+        //         this.setAlert('Success', axioResponse.data.message, 'success');
+        //         cb();
+        //     } else {
+        //         this.setLoader(false);
+        //         this.setAlert('Failed', axioResponse.data.message ? axioResponse.data.message : axioResponse.data.message ? axioResponse.data.message : 'Something Went Wrong', 'error');
+        //     }
+        // }).catch(() => {
+        //     this.setLoader(false);
+        //     this.setAlert('Failed', 'Something Went Wrong', 'error');
+        // })
 
 
-    // register(data, cb = () => undefined) {
-    //     this.setLoader(true);
-    //     data.userType = userTypes.Guest;
-    //     apiRequest(userRegister, 'POST', data).then(axioResponse => {
-    //         if (axioResponse.data.status) {
-    //             this.setLoader(false);
-    //             this.setAlert('Success', axioResponse.data.message, 'success');
-    //             cb();
-    //         } else {
-    //             this.setLoader(false);
-    //             this.setAlert('Failed', axioResponse.data.message ? axioResponse.data.message : axioResponse.data.message ? axioResponse.data.message : 'Something Went Wrong', 'error');
-    //         }
-    //     }).catch(() => {
-    //         this.setLoader(false);
-    //         this.setAlert('Failed', 'Something Went Wrong', 'error');
-    //     })
-
-
-    // }
+    }
 
     // userCreateByAdmin(data, cb = () => undefined) {
     //     this.setLoader(true);
@@ -70,15 +69,15 @@ class UserService {
     signin(email, password) {
 
         this.setLoader(true);
-     
 
-        if(email === 'admin@admin.com' && password === 'admin'){
+
+        if (email === 'admin@admin.com' && password === 'admin') {
             localStorage.setItem('jwt', `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZnVsbE5hbWUiOiJKb2huIERvZSIsInVzZXJUeXBlIjoiQWRtaW4iLCJpYXQiOjE5MTYyMzkwMjJ9.Uz5TVUD-9ykj5M6XtD1asJRubbsNNKiOJ3dbxROt28c
             `);
             this.setAuth(true);
             this.setLoader(false);
             this.setAlert('Success', 'Successfully Logged', 'success');
-        } else{
+        } else {
             this.setLoader(false);
             this.setAlert('Failed', "Something Went wrong", 'error');
         }

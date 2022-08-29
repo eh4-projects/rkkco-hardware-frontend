@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../../customer-hooks/form.hook';
 import { CustomButton } from '../../components/common/forms/custom-btn';
 import { CustomForm } from '../../components/common/forms/custom-form'
@@ -7,13 +7,13 @@ import { CustomInput } from '../../components/common/forms/customInput';
 import { errorInitObject, formInitObject } from '../../form-init-object/login.init'
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
-import { isEmail, isRequired, isName } from '../../config/validation.config';
+import { isEmail, isRequired, isName, isPasswordMatch, isPassword, unTouched } from '../../config/validation.config';
 import { UserService } from '../../services/user.service';
 import { CustomSelectBox } from '../../components/common/forms/custom-select-box';
 
 
 const SignUp = () => {
-
+    let history = useHistory();
     const initObject = {
         firstName: '',
         lastName: '',
@@ -37,13 +37,22 @@ const SignUp = () => {
 
     const handleChange = (name, value) => {
         setForm(pre => {
-            console.log("ss", value)
             return {
                 ...pre,
                 [name]: value
             }
         })
     }
+
+    useEffect(() => {
+
+    }, [form.confirmPassword, form.confirmPassword]);
+
+
+    useEffect(() => {
+        setErrorCustom('confirmPassword', unTouched);
+        setuserService(new UserService(setLoader, setAlert, setAuth));
+    }, []);
 
     const setErrorCustom = (name, value) => {
         setErrors(pre => {
@@ -60,7 +69,8 @@ const SignUp = () => {
 
 
     const onSubmit = async () => {
-        await userService.signup(form.fName, form.lName, form.userId, form.password);
+        console.log("KKKK")
+        await userService.register(form, () => history.push("/"));
     }
 
     return <div className='register-form-main'>
@@ -81,16 +91,15 @@ const SignUp = () => {
                         <CustomInput
                             className="cust-input"
                             placeholder="Enter first name"
-                            name="fName"
+                            name="firstName"
                             label="First Name"
                             type="text"
-                            value={form.fName}
+                            value={form.firstName}
                             onChange={handleChange}
-                            errorMsg={errors.fName}
+                            errorMsg={errors.firstName}
                             setError={setErrorCustom}
                             validations={[isRequired, isName]}
                             maxLength={320}
-                            disabled={false}
                         />
                     </div>
 
@@ -98,28 +107,29 @@ const SignUp = () => {
                         <CustomInput
                             className="cust-input"
                             placeholder="Enter last name"
-                            name="lName"
+                            name="lastName"
                             label="Last Name"
                             type="text"
-                            value={form.lName}
+                            value={form.lastName}
                             onChange={handleChange}
-                            errorMsg={errors.lName}
+                            errorMsg={errors.lastName}
                             setError={setErrorCustom}
                             validations={[isRequired, isName]}
                             maxLength={320}
-                            disabled={false}
                         />
                     </div>
 
                     <div className="register-form-inputs">
                         <CustomSelectBox
                             title={"User Type"}
+                            label="User Type"
                             value={form.userType}
                             name="userType"
                             data={[{ name: "Select Your user Type", id: '' }, ...userTypeList]}
                             valueKey="name"
                             onChange={(val) => { handleChange("userType", val) }}
                             setError={setErrorCustom}
+                            errorMsg={errors.userType}
                             isRequiredFlag={true}
                         />
                     </div>
@@ -152,8 +162,8 @@ const SignUp = () => {
                             onChange={handleChange}
                             errorMsg={errors.password}
                             setError={setErrorCustom}
-                            validations={[isRequired]}
-                            password={50}
+                            validations={[isPassword, isRequired]}
+                            maxLength={50}
                         />
                     </div>
 
@@ -164,13 +174,14 @@ const SignUp = () => {
                             placeholder="Enter confirm password"
                             name="confirmPassword"
                             label="Confirm Password"
-                            type="confirmPassword"
+                            type="password"
                             value={form.confirmPassword}
                             onChange={handleChange}
                             errorMsg={errors.confirmPassword}
+                            password={form.password}
                             setError={setErrorCustom}
-                            validations={[isRequired]}
-                            password={50}
+                            validations={[isPasswordMatch, isRequired]}
+                            maxLength={50}
                         />
                     </div>
 
