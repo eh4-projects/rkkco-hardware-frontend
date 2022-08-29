@@ -36,27 +36,41 @@ class CatergoryItemService {
         })
     }
 
-    getCategory(setcatergoryService) {
-        this.setLoader(true);
-        apiRequest(categoryApi, 'GET').then(axioResponse => {
-            console.log("llll", axioResponse)
-            this.setLoader(false);
-            console.log("KKK", axioResponse.data)
-            if (axioResponse && axioResponse.data && (axioResponse.data.length > 0)) {
-                console.log("KKjnjknK", axioResponse.data)
-                setcatergoryService(axioResponse.data.data.map(e => {
-                    console.log("Aaa", e.category)
-                    return {
-                        name: e.category,
-                        id: e.id
-                    }
-                }))
+    // getCategory(setCategoryList) {
+    //     this.setLoader(true);
+    //     apiRequest(categoryApi, 'GET').then(axioResponse => {
+    //         this.setLoader(false);
+    //         if (axioResponse && axioResponse.data && (axioResponse.data.length > 0)) {
+    //             setCategoryList(axioResponse.data.data.map(e => {
+    //                 return {
+    //                     name: e.category,
+    //                     id: e.id
+    //                 }
+    //             }))
 
+    //         }
+    //     }).catch(axioError => {
+    //         this.setLoader(false);
+    //     })
+    // }
+
+    getCategory(setCategoryList = () => undefined) {
+        this.setLoader(true);
+        apiRequest(categoryApi, "GET").then((axioResponse) => {
+            if (axioResponse.data.status) {
+                this.setLoader(false);
+                // console.log(axioResponse);
+                setCategoryList(get(axioResponse, "data.data", []));
+            } else {
+                this.setLoader(false);
+                setCategoryList([]);
             }
         }).catch(axioError => {
             this.setLoader(false);
-        })
+            this.setAlert('Failed', 'Something Went Wrong', 'error');
+        });
     }
+
 }
 
 export { CatergoryItemService };
