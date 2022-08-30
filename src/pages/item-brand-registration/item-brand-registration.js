@@ -28,6 +28,26 @@ const ItemBrandRegistration = () => {
         setbrandService(new BrandItemService(setLoader, setAlert, setAuth));
     }, []);
 
+    const reportsData = [{
+        itemNumber: "1",
+        name: "TEST 1",
+
+    },
+    {
+        itemNumber: "2",
+        name: "TEST 2",
+
+    },
+    {
+        itemNumber: "3",
+        name: "TEST 3",
+
+    },
+    {
+        itemNumber: "4",
+        name: "TEST 4",
+
+    }]
 
     return (
         <div className='item-brand-reg-home'>
@@ -70,6 +90,22 @@ const ItemBrandRegistration = () => {
                 <div className='card item-brand-list'>
                     <div className='card-header'>Brand Item List</div>
                     <div className='card-body'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Number</th>
+                                    <th scope="col">Catergory Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {reportsData.map(item => (
+                                    <tr>
+                                        <th scope="row">{item.itemNumber}</th>
+                                        <td>{item.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>

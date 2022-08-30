@@ -17,6 +17,7 @@ const ItemCategoryRegistration = () => {
     const [catergoryService, setcatergoryService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
+    const { categoryList, setCategoryList } = useState([]);
 
     const onSubmit = async () => {
         await catergoryService.addCategory(form.catergoryName, () => {
@@ -31,8 +32,8 @@ const ItemCategoryRegistration = () => {
 
     useEffect(() => {
         if (catergoryService) {
-            let data = catergoryService.getCategory(setcatergoryService)
-            console.log("KMK", data);
+            let data = catergoryService.getCategory(setCategoryList)
+            console.log(data);
         }
     }, [catergoryService]);
 
