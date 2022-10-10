@@ -14,7 +14,7 @@ class CatergoryItemService {
         this.setLoader = setLoader
     }
 
-    addCategory(categoryName, callback = () => { }) {
+    addCategory(categoryName, callback = () => {}) {
         this.setLoader(true);
         const body = {
             category: categoryName

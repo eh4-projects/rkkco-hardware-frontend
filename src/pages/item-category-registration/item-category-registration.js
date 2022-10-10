@@ -63,7 +63,7 @@ const ItemCategoryRegistration = () => {
         <div className='item-catergory-reg-home'>
             <div className='container-fluid'>
                 <div className='item-catergory-reg-title'>
-                    <h2 className='item-title'>Item Catergory Registration</h2>
+                    <label className='item-title'>Item Catergory Registration</label>
                 </div>
                 <div className=' card item-catergory-reg-content'>
                     <div className='card-header'>Add New Catergory Item</div>

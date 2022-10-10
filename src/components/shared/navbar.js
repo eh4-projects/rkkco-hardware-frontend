@@ -5,9 +5,7 @@ import { defaultRoutes } from '../../config/default-route.config';
 import { userTypes } from '../../config/user-type.config';
 import { AuthContextAPI } from '../contexts/auth.context';
 
-const Navbar = ({
-    isTransparent = false
-}) => {
+const Navbar = () => {
     const { auth } = useContext(AuthContextAPI);
 
     return (

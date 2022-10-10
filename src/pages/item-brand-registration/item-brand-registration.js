@@ -53,7 +53,7 @@ const ItemBrandRegistration = () => {
         <div className='item-brand-reg-home'>
             <div className='container-fluid'>
                 <div className='item-brand-reg-title'>
-                    <h2 className='item-title'>Item Brand Registration</h2>
+                    <label className='item-title'>Item Brand Registration</label>
                 </div>
                 <div className=' card item-brand-reg-content'>
                     <div className='card-header'>Add New Brand Item</div>

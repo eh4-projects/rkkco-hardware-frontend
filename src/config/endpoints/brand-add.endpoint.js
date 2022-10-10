@@ -1,4 +1,4 @@
 const brandApi = `category`;
+const getAllBrands = `brands`;
 
-
-export { brandApi };
+export { brandApi, getAllBrands };

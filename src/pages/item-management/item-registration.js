@@ -10,16 +10,20 @@ const ItemRegistration = () => {
     const [itemService, setItemService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
+    const [itemNo, setItemNo] = useState(undefined);
 
     useEffect(() => {
-        setItemService(new ItemService(setLoader, setAlert, setAuth));
+        const service = new ItemService(setLoader, setAlert, setAuth);
+        service.getItemNo(setItemNo);
+        
+        setItemService(service);        
     }, []);
 
     const initObject = {
         category: '',
         brand: '',
-        companyBarcode: '1000.10',
-        itemBarcode: '4325432523.34',
+        companyBarcode: '',
+        itemBarcode: '',
         itemName: '',
         unit: '',
         threshold: '',
@@ -30,7 +34,6 @@ const ItemRegistration = () => {
     };
     const [itemImage, setItemImage] = useState(DefaultImage);
     const [form, setForm] = useState(initObject);
-    const [itemNo, setItemNo] = useState(undefined);
     const [itemBarCode, setItemBarCode] = useState(undefined);
 
     const ImageHandler = (e) => {
@@ -53,14 +56,6 @@ const ItemRegistration = () => {
     }
 
     useEffect(() => {
-        getNextItemNo();
-    })
-
-    const getNextItemNo = async () => {
-        setItemNo(await itemService.getItemNo());
-    }
-
-    useEffect(() => {
         generateBarcode();
     }, [itemNo])
 
@@ -75,14 +70,15 @@ const ItemRegistration = () => {
             background: '#ffffff',
             width: 2,
             height: 100,
-            displayValue : true
+            displayValue: true
         },
-        
+
     });
 
     const clearData = () => {
         console.log("hello");
         setForm(initObject);
+        console.log(initObject);
     }
 
     const addItem = () => {
@@ -97,16 +93,15 @@ const ItemRegistration = () => {
         form.threshold = parseFloat(form.threshold);
         form.itemSize = parseFloat(form.itemSize);
         form.itemImage = btoa(form.itemImage)
-        console.log(form.itemImage);
+        form.barcode = itemBarCode;
         itemService.addItem(form);
     }
-
 
     return (
         <div className="item-registration">
             <div className="container-fluid">
-                <div className="stock-content">
-                    <label className="stock-topic">Item Registration</label>
+                <div className="item-reg-content">
+                    <label className="item-reg-topic">Item Registration</label>
                     <div className="card stock-card">
                         <div className="card-header">Add New Item</div>
                         <div className="card-body">
@@ -119,7 +114,7 @@ const ItemRegistration = () => {
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Company Barcode</p>
-                                        <input type="text" name="companyBarcode" onChange={(e) => { handleChange(e.target.name, e.target.value) }} className="form-control dropdown form-control-sm" />
+                                        <input type="text" name="companyBarcode" onChange={(e) => { handleChange(e.target.name, e.target.value) }} value={form.companyBarcode} className="form-control dropdown form-control-sm" />
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Item Barcode</p>

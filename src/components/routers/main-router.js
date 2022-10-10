@@ -3,12 +3,12 @@ import { AuthContextAPI } from '../contexts/auth.context';
 import { Redirect, Route, Switch } from 'react-router';
 import { NonAuthRoute } from './non-auth-route';
 import { AuthRoute } from './auth-route';
-import { NormalRoute } from './normal-route';
 import { SignIn } from '../../pages/signin/singin';
 import { userTypes } from '../../config/user-type.config';
 import { Dashboard } from '../../pages/dashboard/dashboard';
 import { Quotation } from '../../pages/quotation/quotation';
 import { ItemRegistration } from '../../pages/item-management/item-registration';
+import { ItemList } from '../../pages/item-management/item-list';
 import { UpdateStock } from '../../pages/stock-management/update-stock';
 import { StockOverview } from '../../pages/stock-management/stock-overview';
 import { DailyReports } from '../../pages/daily-reports/daily-reports';
@@ -29,6 +29,7 @@ const MainRouter = () => {
         <NonAuthRoute path="/stock-overview" isSidebar={true} exact={true} component={StockOverview} />
         <AuthRoute path="/update-stock" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={UpdateStock} />
         <AuthRoute path="/item-registration" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemRegistration} />
+        <AuthRoute path="/items" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={ItemList} />
         <AuthRoute path="/quotation" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={Quotation} />
         <AuthRoute path="/daily-reports" isSidebar={true} exact={true} allowed={[userTypes.Admin]} component={DailyReports} />
         <AuthRoute path="/billing" isSidebar={true} allowed={[userTypes.Admin]} exact={true} component={BillingHome} />
