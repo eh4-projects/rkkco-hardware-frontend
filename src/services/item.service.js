@@ -1,9 +1,5 @@
 import { itemApi, getItemNo, getItemListArray} from '../config/endpoints/items.endpoint';
 import { apiRequest, apiRequestWithToken } from "./core-api.service";
-import { userTypes } from '../config/user-type.config'
-import get from 'lodash.get';
-import { chatLinesAva } from '../config/endpoints/user-management.endpoint';
-
 
 class ItemService {
 
@@ -59,6 +55,5 @@ class ItemService {
         });
     }
 }
-
 
 export { ItemService };

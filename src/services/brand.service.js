@@ -10,11 +10,19 @@ class BrandItemService {
         this.setLoader = setLoader
     }
 
-    getAllBrands(callback){
-        apiRequest(getAllBrands, 'GET').then(res => {
-            console.log(res.data);
-            callback =  res.data;
-        })
+    getAllBrands = (callback) => {
+        apiRequest(brandApi, 'GET').then(axioResponse => {
+            if (axioResponse.status === 202) {
+                this.setLoader(false);
+                callback(axioResponse.data);
+            } else {
+                this.setLoader(false);
+            }
+        }).catch(error => {
+            console.log(error);
+            this.setLoader(false);
+            this.setAlert('Failed', 'Something Went Wrong', 'error');
+        });
     } 
 
     addBrand(brandName, callback = () => { }) {

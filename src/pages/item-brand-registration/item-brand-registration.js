@@ -16,38 +16,22 @@ const ItemBrandRegistration = () => {
     const [brandService, setbrandService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
+    const [brands, setBrands] = useState([]);
 
-    const onSubmit = async () => {
+    const addBrand = async () => {
         await brandService.addBrand(form.brandName, () => {
             setFormCustom("brandName", '');
             setErrorCustom("brandName", '');
         });
+        brandService.getAllBrands(setBrands)
     };
 
     useEffect(() => {
-        setbrandService(new BrandItemService(setLoader, setAlert, setAuth));
+        const brandService = new BrandItemService(setLoader, setAlert, setAuth);
+        brandService.getAllBrands(setBrands);
+
+        setbrandService(brandService);
     }, []);
-
-    const reportsData = [{
-        itemNumber: "1",
-        name: "TEST 1",
-
-    },
-    {
-        itemNumber: "2",
-        name: "TEST 2",
-
-    },
-    {
-        itemNumber: "3",
-        name: "TEST 3",
-
-    },
-    {
-        itemNumber: "4",
-        name: "TEST 4",
-
-    }]
 
     return (
         <div className='item-brand-reg-home'>
@@ -61,7 +45,7 @@ const ItemBrandRegistration = () => {
                         <div className='row'>
                             <CustomForm
                                 mainClass="login-form-card"
-                                onSubmit={onSubmit}
+                                onSubmit={addBrand}
                                 setError={setErrorCustom}
                                 errors={errors}>
                                 <CustomInput
@@ -98,10 +82,10 @@ const ItemBrandRegistration = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {reportsData.map(item => (
+                                {brands.map(item => (
                                     <tr>
-                                        <th scope="row">{item.itemNumber}</th>
-                                        <td>{item.name}</td>
+                                        <th scope="row" key={item.id}>{item.id}</th>
+                                        <td>{item.brand}</td>
                                     </tr>
                                 ))}
                             </tbody>
