@@ -14,6 +14,7 @@ class BrandItemService {
         apiRequest(brandApi, 'GET').then(axioResponse => {
             if (axioResponse.status === 202) {
                 this.setLoader(false);
+                console.log(axioResponse.data);
                 callback(axioResponse.data);
             } else {
                 this.setLoader(false);

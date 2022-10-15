@@ -14,13 +14,12 @@ class CatergoryItemService {
         this.setLoader = setLoader
     }
 
-    addCategory(categoryName, callback = () => {}) {
+    addCategory(categoryName, callback = () => { }) {
         this.setLoader(true);
         const body = {
             category: categoryName
         }
         apiRequest(categoryApi, 'POST', body).then(axioResponse => {
-            console.log(axioResponse)
             if (axioResponse.data.status) {
                 console.log('axioResponse');
                 this.setLoader(false);
@@ -36,31 +35,13 @@ class CatergoryItemService {
         })
     }
 
-    // getCategory(setCategoryList) {
-    //     this.setLoader(true);
-    //     apiRequest(categoryApi, 'GET').then(axioResponse => {
-    //         this.setLoader(false);
-    //         if (axioResponse && axioResponse.data && (axioResponse.data.length > 0)) {
-    //             setCategoryList(axioResponse.data.data.map(e => {
-    //                 return {
-    //                     name: e.category,
-    //                     id: e.id
-    //                 }
-    //             }))
-
-    //         }
-    //     }).catch(axioError => {
-    //         this.setLoader(false);
-    //     })
-    // }
 
     getCategory(setCategoryList = () => undefined) {
         this.setLoader(true);
         apiRequest(categoryApi, "GET").then((axioResponse) => {
-            if (axioResponse.data.status) {
+            if (axioResponse.status === 202) {
                 this.setLoader(false);
-                // console.log(axioResponse);
-                setCategoryList(get(axioResponse, "data.data", []));
+                setCategoryList(axioResponse.data);
             } else {
                 this.setLoader(false);
                 setCategoryList([]);

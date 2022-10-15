@@ -10,6 +10,7 @@ class ItemService {
     }
 
     addItem = (form) => {
+        console.log(form);
         this.setLoader(true);
         apiRequest(itemApi, 'POST', form).then(axioResponse => {
             if (axioResponse.data.status) {
@@ -45,6 +46,7 @@ class ItemService {
     getItemList = (callback) => {
         apiRequest(getItemListArray, 'GET')
         .then(response => {
+            console.log(response);
             this.setLoader(false);
             callback(response.data);
         })

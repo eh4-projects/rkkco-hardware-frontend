@@ -5,6 +5,9 @@ import { ItemService } from '../../services/item.service';
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { useBarcode } from 'react-barcodes';
+import { BrandItemService } from '../../services/brand.service';
+import { CatergoryItemService } from '../../services/category.service';
+import { UnitService } from '../../services/unit.service';
 
 const ItemRegistration = () => {
     const [itemService, setItemService] = useState(undefined);
@@ -15,8 +18,8 @@ const ItemRegistration = () => {
     useEffect(() => {
         const service = new ItemService(setLoader, setAlert, setAuth);
         service.getItemNo(setItemNo);
-        
-        setItemService(service);        
+
+        setItemService(service);
     }, []);
 
     const initObject = {
@@ -35,6 +38,9 @@ const ItemRegistration = () => {
     const [itemImage, setItemImage] = useState(DefaultImage);
     const [form, setForm] = useState(initObject);
     const [itemBarCode, setItemBarCode] = useState(undefined);
+    const [itemBrandList, setItemBrandList] = useState([]);
+    const [itemCategoryList, setItemCategoryList] = useState([]);
+    const [unitList, setUnitList] = useState([]);
 
     const ImageHandler = (e) => {
         const reader = new FileReader();
@@ -57,6 +63,16 @@ const ItemRegistration = () => {
 
     useEffect(() => {
         generateBarcode();
+
+        const brandService = new BrandItemService(setLoader, setAlert, setAuth);
+        brandService.getAllBrands(setItemBrandList);
+
+        const categoryService = new CatergoryItemService(setLoader, setAlert, setAuth);
+        categoryService.getCategory(setItemCategoryList);
+
+        const unitService = new UnitService(setLoader, setAlert, setAuth);
+        unitService.getUnit(setUnitList);
+
     }, [itemNo])
 
     const generateBarcode = () => {
@@ -76,25 +92,29 @@ const ItemRegistration = () => {
     });
 
     const clearData = () => {
-        console.log("hello");
         setForm(initObject);
-        console.log(initObject);
     }
 
     const addItem = () => {
         if (itemImage !== '/static/media/default_image_01.6988980f.png') {
             form.itemImage = itemImage;
         }
-        form.brand = parseInt(form.brand);
-        form.category = parseInt(form.category);
+        console.log(form.category);
+        form.brand = { "id": parseInt(form.brand) };
+        form.category = { "id": parseInt(form.category) };
         form.buyingPrice = parseFloat(form.buyingPrice);
         form.sellingPrice = parseFloat(form.sellingPrice);
-        form.unit = parseInt(form.unit);
+        form.unit = { "id": parseInt(form.unit) };
         form.threshold = parseFloat(form.threshold);
         form.itemSize = parseFloat(form.itemSize);
         form.itemImage = btoa(form.itemImage)
         form.barcode = itemBarCode;
         itemService.addItem(form);
+    }
+
+    const getAllBrands = () => {
+        const service = new CatergoryItemService(setLoader, setAlert, setAuth);
+        service.getCategory(setItemCategoryList);
     }
 
     return (
@@ -108,6 +128,7 @@ const ItemRegistration = () => {
                             <div className="row scan-btn-row">
                                 <div>
                                     <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan Code" isSmall="true" />
+                                    <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan " isSmall="true" onClick={() => getAllBrands()} />
                                 </div>
                             </div>
                             <form className="stock-update-form">
@@ -128,21 +149,23 @@ const ItemRegistration = () => {
                                 <div className="row">
                                     <div className="col">
                                         <p className="field-title">Category</p>
-                                        <input type="text" name="category" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="categoryList" className="form-control dropdown form-control-sm" />
-                                        <datalist id="categoryList">
-                                            <option value="1">Paint</option>
-                                            <option value="2">Pencil</option>
-                                            <option value="3">Paper</option>
-                                        </datalist>
+                                        {/* <input type="text" name="category" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="categoryList" className="form-control dropdown form-control-sm" /> */}
+                                        <select id="categoryList" className="form-control dropdown form-control-sm" name="category" onChange={(e) => { handleChange(e.target.name, e.target.value) }}>
+                                            <option ></option>
+                                            {itemCategoryList.map((data) =>
+                                                <option value={data.id}>{data.category}</option>
+                                            )}
+                                        </select>
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Brand</p>
-                                        <input type="text" name="brand" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="brandList" className="form-control dropdown form-control-sm" />
-                                        <datalist id="brandList">
-                                            <option value="1">Pen</option>
-                                            <option value="2">Pencil</option>
-                                            <option value="3">Paper</option>
-                                        </datalist>
+                                        {/* <input type="text" name="brand" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="brandList" className="form-control dropdown form-control-sm" select/> */}
+                                        <select id="brandList" className="form-control dropdown form-control-sm" name="brand" onChange={(e) => { handleChange(e.target.name, e.target.value) }}>
+                                            <option ></option>
+                                            {itemBrandList.map((data) =>
+                                                <option value={data.id}>{data.brand}</option>
+                                            )}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -156,12 +179,13 @@ const ItemRegistration = () => {
                                     </div>
                                     <div className="col">
                                         <p className="field-title">Unit</p>
-                                        <input type="text" name="unit" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="unitList" className="form-control dropdown form-control-sm" />
-                                        <datalist id="unitList">
-                                            <option value="1">Kilogram</option>
-                                            <option value="2">Liter</option>
-                                            <option value="3">Meter</option>
-                                        </datalist>
+                                        {/* <input type="text" name="unit" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="unitList" className="form-control dropdown form-control-sm" /> */}
+                                        <select id="unitList" name="unit" onChange={(e) => { handleChange(e.target.name, e.target.value) }} className="form-control dropdown form-control-sm">
+                                            <option></option>
+                                            {unitList.map((data) =>
+                                                <option value={data.id}>{data.unitDescription}</option>
+                                            )}
+                                        </select>
                                     </div>
 
                                 </div>

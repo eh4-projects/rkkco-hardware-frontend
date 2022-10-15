@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import DefaultImage from '../../assets/default_image_01.png';
 import { CustomButton } from '../../components/common/forms/custom-btn';
 import { ItemService } from '../../services/item.service';
-import { BrandItemService } from '../../services/brand.service';
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { useBarcode } from 'react-barcodes';
@@ -35,13 +34,6 @@ const ItemList = () => {
                 [e.target.name]: e.target.value
             }
         })
-    }
-
-    const getAllBrands = () => {
-        const service = new BrandItemService(setLoader, setAlert, setAuth);
-        let data ;
-        service.getAllBrands(data);
-        console.log(data);
     }
 
     return (
@@ -78,7 +70,7 @@ const ItemList = () => {
                         <div className="card-footer text-muted">
                             <div className="row">
                                 <div className="col">
-                                    <CustomButton customClasses="item-list-btn btn-one btn-outline-primary" btnText="Search Item" isSmall="true" onClick={() => getAllBrands()}/>
+                                    <CustomButton customClasses="item-list-btn btn-one btn-outline-primary" btnText="Search Item" isSmall="true"/>
                                 </div>
                             </div>
                         </div>
@@ -107,10 +99,10 @@ const ItemList = () => {
                                             <tr key={item.itemNo}>
                                                 <td>{item.itemNo}</td>
                                                 <td>{item.barcode}</td>
-                                                <td>{item.brand}</td>
+                                                <td>{item.brand.brand}</td>
                                                 <td>{item.itemName}</td>
                                                 <td>{item.itemSize}</td>
-                                                <td>{item.unit}</td>
+                                                <td>{item.unit.unit}</td>
                                                 <td style={{ textAlign: 'right' }}>{item.buyingPrice}</td>
                                                 <td style={{ textAlign: 'right' }}>{item.sellingPrice}</td>
                                                 <td style={{ textAlign: 'right' }}>
