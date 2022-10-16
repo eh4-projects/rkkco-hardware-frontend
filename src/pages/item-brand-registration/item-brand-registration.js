@@ -16,24 +16,28 @@ const ItemBrandRegistration = () => {
     const [brandService, setbrandService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
+    const [brands, setBrands] = useState([]);
 
-    const onSubmit = async () => {
+    const addBrand = async () => {
         await brandService.addBrand(form.brandName, () => {
             setFormCustom("brandName", '');
             setErrorCustom("brandName", '');
         });
+        brandService.getAllBrands(setBrands)
     };
 
     useEffect(() => {
-        setbrandService(new BrandItemService(setLoader, setAlert, setAuth));
-    }, []);
+        const brandService = new BrandItemService(setLoader, setAlert, setAuth);
+        brandService.getAllBrands(setBrands);
 
+        setbrandService(brandService);
+    }, []);
 
     return (
         <div className='item-brand-reg-home'>
             <div className='container-fluid'>
                 <div className='item-brand-reg-title'>
-                    <h2 className='item-title'>Item Brand Registration</h2>
+                    <label className='item-title'>Item Brand Registration</label>
                 </div>
                 <div className=' card item-brand-reg-content'>
                     <div className='card-header'>Add New Brand Item</div>
@@ -41,7 +45,7 @@ const ItemBrandRegistration = () => {
                         <div className='row'>
                             <CustomForm
                                 mainClass="login-form-card"
-                                onSubmit={onSubmit}
+                                onSubmit={addBrand}
                                 setError={setErrorCustom}
                                 errors={errors}>
                                 <CustomInput
@@ -70,6 +74,22 @@ const ItemBrandRegistration = () => {
                 <div className='card item-brand-list'>
                     <div className='card-header'>Brand Item List</div>
                     <div className='card-body'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Number</th>
+                                    <th scope="col">Catergory Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {brands.map(item => (
+                                    <tr>
+                                        <th scope="row" key={item.id}>{item.id}</th>
+                                        <td>{item.brand}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>

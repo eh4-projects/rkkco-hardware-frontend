@@ -17,7 +17,7 @@ const ItemCategoryRegistration = () => {
     const [catergoryService, setcatergoryService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
-    const [catergories, setCatergories] = useState([]);
+    const { categoryList, setCategoryList } = useState([]);
 
     const onSubmit = async () => {
         await catergoryService.addCategory(form.catergoryName, resetForm);
@@ -29,7 +29,8 @@ const ItemCategoryRegistration = () => {
 
     useEffect(() => {
         if (catergoryService) {
-            catergoryService.getAll(setCatergories);
+            let data = catergoryService.getCategory(setCategoryList)
+            console.log(data);
         }
     }, [catergoryService]);
 
@@ -37,7 +38,7 @@ const ItemCategoryRegistration = () => {
         <div className='item-catergory-reg-home'>
             <div className='container-fluid'>
                 <div className='item-catergory-reg-title'>
-                    <h2 className='item-title'>Item Catergory Registration</h2>
+                    <label className='item-title'>Item Catergory Registration</label>
                 </div>
                 <div className=' card item-catergory-reg-content'>
                     <div className='card-header'>Add New Catergory Item</div>
@@ -82,7 +83,7 @@ const ItemCategoryRegistration = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {catergories.map(item => (
+                                {categoryList.map(item => (
                                     <tr>
                                         <th scope="row">{item.id}</th>
                                         <td>{item.category}</td>

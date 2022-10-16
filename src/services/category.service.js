@@ -20,7 +20,6 @@ class CatergoryItemService {
             category: categoryName
         }
         apiRequest(categoryApi, 'POST', body).then(axioResponse => {
-            console.log(axioResponse)
             if (axioResponse.data.status) {
                 console.log('axioResponse');
                 this.setLoader(false);
@@ -45,8 +44,10 @@ class CatergoryItemService {
             }
         }).catch(axioError => {
             this.setLoader(false);
-        })
+            this.setAlert('Failed', 'Something Went Wrong', 'error');
+        });
     }
+
 }
 
 export { CatergoryItemService };

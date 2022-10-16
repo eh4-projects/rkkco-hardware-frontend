@@ -31,6 +31,12 @@ const SideBarItems = [
         allowed: [userTypes.OcMember, userTypes.Admin],
     },
     {
+        icon: AiFillWechat,
+        displayName: "Items List",
+        link: "/items",
+        allowed: [userTypes.OcMember, userTypes.Admin],
+    },
+    {
         icon: RiBillFill,
         displayName: "Quotations",
         link: "/quotation",
