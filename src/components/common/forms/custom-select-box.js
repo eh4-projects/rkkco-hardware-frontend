@@ -14,7 +14,8 @@ const CustomSelectBox=({
     setError=()=>undefined,
     extraClassesWrapper="",
     isRequiredFlag=false,
-    hintTxt=""
+    hintTxt="",
+    labelClassName=""
 
 })=>{
 
@@ -38,18 +39,18 @@ const CustomSelectBox=({
 
     return (
         <div className={`form-group text-left ${errorMsg&&errorMsg!==unTouched?'is-invalid':''} ${extraClassesWrapper}`}>
-            {title?<label htmlFor="select-box" className={`cust-select-box-lbl ${errorMsg&&errorMsg!==unTouched?'text-danger':''}`}>{title}</label>:null}
+            {title?<label htmlFor="select-box" className={`cust-select-box-lbl ${errorMsg&&errorMsg!==unTouched?'text-danger':''} ${labelClassName}`}>{title}</label>:null}
             <select 
-                placeholder="Chamith"
+                placeholder=""
                 id="select-box" 
                 value={value} 
-                onChange={(val)=>onChange(val.target.value)}
+                onChange={(val)=>onChange(name, val.target.value)}
                 className={`form-control ${extraClasses} ${errorMsg&&errorMsg!==unTouched?'is-invalid':''}`}
             >
                 {
                     data.map((item,index)=>{
                         return (
-                            <option className={`select-option ${extraClasses} ${errorMsg&&errorMsg!==unTouched?'is-invalid':''}`} value={item[idKey]} key={index} >{item[valueKey]}</option>
+                            <option className={`select-option ${extraClasses} ${errorMsg&&errorMsg!==unTouched?'is-invalid':''}`} value={item[idKey]} key={index}>{item[valueKey]}</option>
                         );
                     })
                 }

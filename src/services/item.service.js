@@ -3,10 +3,11 @@ import { apiRequest, apiRequestWithToken } from "./core-api.service";
 import { userTypes } from '../config/user-type.config'
 import get from 'lodash.get';
 import { chatLinesAva } from '../config/endpoints/user-management.endpoint';
+import { itemApi } from '../config/endpoints/item.endpoint';
 
 
 
-class CatergoryItemService {
+class ItemService {
 
     constructor(setLoader = () => undefined, setAlert = () => undefined, setAuth = () => undefined) {
         this.setAlert = setAlert;
@@ -14,7 +15,7 @@ class CatergoryItemService {
         this.setLoader = setLoader
     }
 
-    addCategory(categoryName, callback = () => { }) {
+    addItem(categoryName, callback = () => { }) {
         this.setLoader(true);
         const body = {
             category: categoryName
@@ -36,12 +37,12 @@ class CatergoryItemService {
         })
     }
 
-    getAll(setcatergories) {
+    getAll(set) {
         this.setLoader(true);
-        apiRequest(categoryApi, 'GET').then(axioResponse => {
+        apiRequest(itemApi, 'GET').then(axioResponse => {
             this.setLoader(false);
             if (axioResponse && axioResponse.data && (axioResponse.data.length > 0)) {
-                setcatergories(axioResponse.data);
+                set(axioResponse.data);
             }
         }).catch(axioError => {
             this.setLoader(false);
@@ -49,4 +50,4 @@ class CatergoryItemService {
     }
 }
 
-export { CatergoryItemService };
+export { ItemService };

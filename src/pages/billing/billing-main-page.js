@@ -1,33 +1,44 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { CustomButton } from '../../components/common/forms/custom-btn';
+import { CustomForm } from '../../components/common/forms/custom-form';
+import { CustomSelectBox } from '../../components/common/forms/custom-select-box';
+import { CustomInput } from '../../components/common/forms/customInput';
+import { AuthContextAPI } from '../../components/contexts/auth.context';
+import { MetaDataContextAPI } from '../../components/contexts/meta-data.context';
+import { UIContextAPI } from '../../components/contexts/ui.context';
+import { useForm } from '../../customer-hooks/form.hook';
+import { UserService } from '../../services/user.service';
 
+const initObject = {
+    category: '',
+    itemId: '',
+    itemName: '',
+    quantity: 0,
+    price: 0.00,
+};
 const BillingHome = () => {
     let barcodeScankey = 'F4', addItemKey = 'Insert';
+    const { categories,items, itemMap } = useContext(MetaDataContextAPI);
 
-    const initObject = {
-        index: 0,
-        category: '',
-        itemNo: '',
-        itemName: '',
-        quantity: 0,
-        price: 0.00,
-    };
+    const [form, errors, setFormCustom, setErrorCustom] = useForm(initObject, initObject);
+    const [userService, setuserService] = useState(undefined);
+    const { setAuth } = useContext(AuthContextAPI);
+    const { setLoader, setAlert } = useContext(UIContextAPI);
+   
+   
+    useEffect(() => {
+        setuserService(new UserService(setLoader, setAlert, setAuth));
+    }, []);
+
+   
+
     const [totalPrice, setTotalPrice] = useState('0.00');
-    const [form, setForm] = useState(initObject);
     const [inputItemList, setInputItemList] = useState([]);
     const [cash, setCash] = useState('0.00');
     const [cashBalance, setCashBalance] = useState('0.00');
 
-    const handleChange = (e) => {
-        setForm(pre => {
-            return {
-                ...pre,
-                [e.target.name]: e.target.value
-            }
-        })
-    }
-
     const addItem = (itemNo) => {
+        console.log(itemNo)
         let count = Object.keys(inputItemList).length
         let tempArray = { ...inputItemList };
         form.price = form.quantity * 100;
@@ -54,7 +65,6 @@ const BillingHome = () => {
                 }
             }
             setInputItemList(tempArray);
-            setForm(initObject);
             setTotalPrice(pre => {
                 return (parseFloat(pre) + parseFloat(form.price)).toFixed(2)
             })
@@ -73,6 +83,18 @@ const BillingHome = () => {
             return (parseFloat(e.target.value) - parseFloat(totalPrice)).toFixed(2);
         })
     }
+
+    const handleQuantityBalance = (name, value) => {
+        if(form.itemNo){
+            let item = itemMap.get(form.itemNo);
+            setFormCustom(name, value);
+            setFormCustom("price", value * item.sellingPrice)
+        }
+    }
+    useEffect(() => {
+        setFormCustom("quantity", 0);
+        setFormCustom("price", 0);
+    }, [form.itemNo]);
     
 
     const deleteItem = async (itemNo) => {
@@ -106,63 +128,112 @@ const BillingHome = () => {
         console.log("Submit order!");
     }
 
+    const handleItemChange = (name, value) => {
+        setFormCustom(name, value);
+        
+    }
+
     return (
         <div className="billing-home">
             <div className="container-fluid">
                 <div className="billing-content">
                     <label className="billing-topic">Billing Home</label>
+                            <CustomForm
+                                mainClass="billing-update-form"
+                                onSubmit={()=>addItem(form.itemNo)}
+                                setError={setErrorCustom}
+                                errors={errors}>
                     <div className="card billing-card">
                         <div className="card-header">Search Item</div>
                         <div className="card-body">
-                            <form className="billing-update-form">
                                 <div className="row">
                                     <div className="col-md-2">
-                                        <p className="field-title">Category</p>
-                                        <input type="text" name="category" list="categoryList" value={form.category} onChange={(e) => { handleChange(e) }} className="form-control dropdown form-control-sm" />
-                                        <datalist id="categoryList">
-                                            <option value="pen">Paint</option>
-                                            <option value="pencil">Metal</option>
-                                            <option value="paper">Pipeline</option>
-                                        </datalist>
+                                        <CustomSelectBox
+                                            labelClassName="field-title"
+                                            extraClasses = "form-control dropdown form-control-sm"
+                                            valueKey = "category"
+                                            name="category"
+                                            data={categories}
+                                            title='Category'
+                                            value={form.category}
+                                            onChange = {setFormCustom}
+                                            errorMsg={errors.category}
+                                            setError={setErrorCustom}
+                                        />
                                     </div>
                                     <div className="col-md-2">
-                                        <p className="field-title">Item No</p>
-                                        <input type="text" name="itemNo" list="itemNoList" value={form.itemNo} onChange={(e) => { handleChange(e) }} className="form-control dropdown form-control-sm" />
-                                        <datalist id="itemNoList">
-                                            <option value="001">001</option>
-                                            <option value="002">002</option>
-                                            <option value="003">003</option>
-                                        </datalist>
+                                        <CustomSelectBox
+                                            labelClassName = "field-title"
+                                            extraClasses = "form-control dropdown form-control-sm"
+                                            valueKey = "itemNo"
+                                            idKey='itemNo'
+                                            name="itemNo"
+                                            data={items}
+                                            title='Item No'
+                                            value={form.itemNo}
+                                            onChange = {setFormCustom}
+                                            errorMsg={errors.itemNo}
+                                            setError={setErrorCustom}
+                                        />
                                     </div>
                                     <div className="col">
-                                        <p className="field-title">Item Name</p>
-                                        <input type="text" name="itemName" list="itemNameList" value={form.itemName} onChange={(e) => { handleChange(e) }} className="form-control dropdown form-control-sm" />
-                                        <datalist id="itemNameList">
-                                            <option value="pen">Pen</option>
-                                            <option value="pencil">Pencil</option>
-                                            <option value="paper">Paper</option>
-                                        </datalist>
+                                        <CustomSelectBox
+                                            labelClassName = "field-title"
+                                            extraClasses = "form-control dropdown form-control-sm"
+                                            valueKey = "itemName"
+                                            idKey='itemNo'
+                                            name="itemNo"
+                                            data={items}
+                                            title='Item Name'
+                                            value={form.itemNo}
+                                            onChange = {setFormCustom}
+                                            errorMsg={errors.itemNo}
+                                            setError={setErrorCustom}
+                                        />
                                     </div>
                                     <div className="col-md-1">
-                                        <p className="field-title">Quantity</p>
-                                        <input type="number" name="quantity" value={form.quantity} onChange={(e) => { handleChange(e) }} className="form-control dropdown form-control-sm" />
+                                        <CustomInput
+                                            className="form-control dropdown form-control-sm"
+                                            name="quantity"
+                                            label="Quantity"
+                                            type="number"
+                                            labelClassName = "field-title"
+                                            value={form.quantity}
+                                            onChange={handleQuantityBalance}
+                                            errorMsg={errors.quantity}
+                                            setError={setErrorCustom}
+                                        />
                                     </div>
                                     <div className="col-md-2">
-                                        <p className="field-title">Price</p>
-                                        <input style={{ textAlign: 'right' }} type="text" name="price" value={(form.quantity * 100).toFixed(2)} onChange={(e) => { handleChange(e) }} className="form-control dropdown form-control-sm" />
+                                        <CustomInput
+                                            className="form-control dropdown form-control-sm"
+                                            name="price"
+                                            label="Price"
+                                            type="price"
+                                            labelClassName = "field-title"
+                                            value={form.price}
+                                            onChange={setFormCustom}
+                                            errorMsg={errors.price}
+                                            setError={setErrorCustom}
+                                        />
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <div className="card-footer text-muted">
                             <div className="row">
                                 <div className="col">
-                                    <CustomButton customClasses="billing-btn btn-one btn-outline-success" btnText="Add Item" isSmall="true" onClick={() => addItem(form.itemNo)} />
+                                    <CustomButton 
+                                        customClasses="billing-btn btn-one btn-outline-success" 
+                                        btnText="Add Item" 
+                                        isSmall="true" 
+                                        btnType="submit" 
+                                    />
                                     <CustomButton customClasses="billing-btn btn-three btn-outline-primary" btnText="Scan Code (F4)" isSmall="true" onClick={() => scanBarcode(form.itemCode)} />
                                 </div>
                             </div>
                         </div>
                     </div>
+                            </CustomForm>
                     <div className="card billing-card">
                         <div className="card-header">Items List</div>
                         <div className="card-body">

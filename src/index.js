@@ -6,6 +6,7 @@ import { AuthContext } from './components/contexts/auth.context';
 import { UIContext } from './components/contexts/ui.context';
 import { BrowserRouter } from 'react-router-dom';
 import { NotificationContext } from './components/contexts/notification.context';
+import { MetaDataContext } from './components/contexts/meta-data.context';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.render(
       <UIContext>
         <AuthContext>
           <NotificationContext>
-            <App />
+            <MetaDataContext>
+              <App />
+            </MetaDataContext>
           </NotificationContext>
         </AuthContext>
       </UIContext>

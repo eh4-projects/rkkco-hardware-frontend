@@ -12,6 +12,7 @@ const CustomForm = ({
     const isValid = () => {
         let flag = true;
         for (let i in errors) {
+            console.log(flag, i, errors[i]) 
             if (errors[i] !== '') flag = false;
             if (errors[i] === unTouched) {
                 setError(i, isRequired);
@@ -25,7 +26,7 @@ const CustomForm = ({
         
         // console.log(errors)
         if (isValid()) {
-            console.log(errors)
+            console.log("errors")
             onSubmit()
         }
         console.log("errors")
