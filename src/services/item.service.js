@@ -3,9 +3,7 @@ import { apiRequest, apiRequestWithToken } from "./core-api.service";
 import { userTypes } from '../config/user-type.config'
 import get from 'lodash.get';
 import { chatLinesAva } from '../config/endpoints/user-management.endpoint';
-import { itemApi } from '../config/endpoints/item.endpoint';
-
-
+import { itemApi, getItemNo, getItemListArray} from '../config/endpoints/items.endpoint';
 
 class ItemService {
 
@@ -48,6 +46,22 @@ class ItemService {
             this.setLoader(false);
         })
     }
+
+    getItemNo = (callback) => {
+        apiRequest(getItemNo, 'GET')
+            .then(axioResponse => {
+                if (axioResponse.status === 202) {
+                    this.setLoader(false);
+                    callback(axioResponse.data);
+                } else {
+                    this.setLoader(false);
+                }
+            }).catch(error => {
+                console.log(error);
+                this.setLoader(false);
+                this.setAlert('Failed', 'Something Went Wrong', 'error');
+            })
+        }
 }
 
 export { ItemService };

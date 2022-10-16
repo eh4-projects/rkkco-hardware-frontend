@@ -22,7 +22,7 @@ const ItemList = () => {
 
     useEffect(() => {
         const service = new ItemService(setLoader, setAlert, setAuth);
-        service.getItemList(setItemList);
+        service.getAll(setItemList);
 
         setItemService(service);
     }, []);

@@ -8,12 +8,14 @@ import { useBarcode } from 'react-barcodes';
 import { BrandItemService } from '../../services/brand.service';
 import { CatergoryItemService } from '../../services/category.service';
 import { UnitService } from '../../services/unit.service';
+import { MetaDataContextAPI } from '../../components/contexts/meta-data.context';
 
 const ItemRegistration = () => {
     const [itemService, setItemService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
     const [itemNo, setItemNo] = useState(undefined);
+    const { categories, brands} = useContext(MetaDataContextAPI);
 
     useEffect(() => {
         const service = new ItemService(setLoader, setAlert, setAuth);
@@ -64,11 +66,11 @@ const ItemRegistration = () => {
     useEffect(() => {
         generateBarcode();
 
-        const brandService = new BrandItemService(setLoader, setAlert, setAuth);
-        brandService.getAllBrands(setItemBrandList);
+        // const brandService = new BrandItemService(setLoader, setAlert, setAuth);
+        // brandService.getAllBrands(setItemBrandList);
 
-        const categoryService = new CatergoryItemService(setLoader, setAlert, setAuth);
-        categoryService.getCategory(setItemCategoryList);
+        // const categoryService = new CatergoryItemService(setLoader, setAlert, setAuth);
+        // categoryService.getCategory(setItemCategoryList);
 
         const unitService = new UnitService(setLoader, setAlert, setAuth);
         unitService.getUnit(setUnitList);
@@ -152,7 +154,7 @@ const ItemRegistration = () => {
                                         {/* <input type="text" name="category" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="categoryList" className="form-control dropdown form-control-sm" /> */}
                                         <select id="categoryList" className="form-control dropdown form-control-sm" name="category" onChange={(e) => { handleChange(e.target.name, e.target.value) }}>
                                             <option ></option>
-                                            {itemCategoryList.map((data) =>
+                                            {categories.map((data) =>
                                                 <option value={data.id}>{data.category}</option>
                                             )}
                                         </select>
@@ -162,7 +164,7 @@ const ItemRegistration = () => {
                                         {/* <input type="text" name="brand" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="brandList" className="form-control dropdown form-control-sm" select/> */}
                                         <select id="brandList" className="form-control dropdown form-control-sm" name="brand" onChange={(e) => { handleChange(e.target.name, e.target.value) }}>
                                             <option ></option>
-                                            {itemBrandList.map((data) =>
+                                            {brands.map((data) =>
                                                 <option value={data.id}>{data.brand}</option>
                                             )}
                                         </select>
