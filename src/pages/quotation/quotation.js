@@ -11,6 +11,8 @@ const Quotation = () => {
     const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
     const [inputItemList, setInputItemList] = useState([{ category: "", itemNo: "",itemName: "", quantity: "",price: ""  }]);
 
+    // const [inputItemList, setInputItemList] = useForm(errorFormItems,formItems);
+
     const [total, setTotal] = useState('0.00');
     const [discount, setDiscount] = useState('0.00');
     const [netTotal, setNetTotal] = useState('0.00');
@@ -116,7 +118,7 @@ const Quotation = () => {
                     <div className="card quotation-card">
                         <div className="card-header">Item List</div>
                         <div className="card-body">
-                            {form.inputItemList.map((x, i) => {
+                            {inputItemList.map((x, i) => {
                                 return (
                                     <div className="row">
                                                     
@@ -201,7 +203,7 @@ const Quotation = () => {
                     </div>
 
                     <hr/>
-                    {JSON.stringify(form)}
+                    {JSON.stringify(form)} 
 
                     <div className="card quotation-card">
                         <div className="card-header">Quotation Summary</div>

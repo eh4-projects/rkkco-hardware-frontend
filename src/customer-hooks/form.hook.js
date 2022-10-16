@@ -6,6 +6,7 @@ function useForm(initFormObject={},initErrorObject={}) {
     const [error, setErrors] = useState(initErrorObject);
 
     const setFormCustom = (name, value) => {
+      console.log(name,value)
         setForm((preState) => {
           return {
             ...preState,
@@ -21,7 +22,10 @@ function useForm(initFormObject={},initErrorObject={}) {
           };
         });
       };
-    
-  return [form,error,setFormCustom,setErrorCustom,setForm];
+    const resetForm=()=>{
+      setForm(initFormObject);
+      setErrors(initErrorObject);
+    };
+  return [form,error,setFormCustom,setErrorCustom,resetForm,setForm];
 }
 export {useForm};

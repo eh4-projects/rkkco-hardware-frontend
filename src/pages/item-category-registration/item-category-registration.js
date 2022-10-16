@@ -13,21 +13,18 @@ import { CatergoryItemService } from '../../services/category.service';
 
 const ItemCategoryRegistration = () => {
 
-    const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
+    const [form, errors, setFormCustom, setErrorCustom, resetForm] = useForm(errorInitObject, formInitObject);
     const [catergoryService, setcatergoryService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
     const { categoryList, setCategoryList } = useState([]);
 
     const onSubmit = async () => {
-        await catergoryService.addCategory(form.catergoryName, () => {
-            setFormCustom("catergoryName", '');
-            setErrorCustom("catergoryName", '');
-        });
+        await catergoryService.addCategory(form.catergoryName, resetForm);
     };
 
     useEffect(() => {
-        setcatergoryService(new CatergoryItemService(setLoader, setAlert, setAuth));
+        setcatergoryService(new CatergoryItemService(setLoader, setAlert, setAuth));    
     }, []);
 
     useEffect(() => {
@@ -37,33 +34,11 @@ const ItemCategoryRegistration = () => {
         }
     }, [catergoryService]);
 
-
-    const reportsData = [{
-        itemNumber: "1",
-        name: "TEST 1",
-
-    },
-    {
-        itemNumber: "2",
-        name: "TEST 2",
-
-    },
-    {
-        itemNumber: "3",
-        name: "TEST 3",
-
-    },
-    {
-        itemNumber: "4",
-        name: "TEST 4",
-
-    }]
-
     return (
         <div className='item-catergory-reg-home'>
             <div className='container-fluid'>
                 <div className='item-catergory-reg-title'>
-                    <h2 className='item-title'>Item Catergory Registration</h2>
+                    <label className='item-title'>Item Catergory Registration</label>
                 </div>
                 <div className=' card item-catergory-reg-content'>
                     <div className='card-header'>Add New Catergory Item</div>
@@ -103,15 +78,15 @@ const ItemCategoryRegistration = () => {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Item Number</th>
+                                    <th scope="col">Catergory Number</th>
                                     <th scope="col">Catergory Name</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {reportsData.map(item => (
+                                {categoryList.map(item => (
                                     <tr>
-                                        <th scope="row">{item.itemNumber}</th>
-                                        <td>{item.name}</td>
+                                        <th scope="row">{item.id}</th>
+                                        <td>{item.category}</td>
                                     </tr>
                                 ))}
                             </tbody>
