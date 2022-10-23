@@ -10,7 +10,7 @@ class BrandItemService {
         this.setLoader = setLoader
     }
 
-    getAllBrands = (callback) => {
+    getAll = (callback) => {
         apiRequest(brandApi, 'GET').then(axioResponse => {
             if (axioResponse.status === 202) {
                 this.setLoader(false);
