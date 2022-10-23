@@ -4,7 +4,6 @@ import { CustomButton } from '../../components/common/forms/custom-btn';
 import { ItemService } from '../../services/item.service';
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
-import { useBarcode } from 'react-barcodes';
 
 
 const ItemList = () => {
@@ -34,6 +33,10 @@ const ItemList = () => {
                 [e.target.name]: e.target.value
             }
         })
+    }
+
+    const deleteItem = (id) => {
+        itemService.deleteItem(id);
     }
 
     return (
@@ -108,7 +111,7 @@ const ItemList = () => {
                                                 <td style={{ textAlign: 'right' }}>
                                                     <CustomButton customClasses="btn-two btn-outline-primary" btnText="View" isSmall="true" />
                                                     <CustomButton customClasses="btn-two btn-outline-success" btnText="Edit" isSmall="true" />
-                                                    <CustomButton customClasses="btn-two btn-outline-danger" btnText="Delete" isSmall="true" />
+                                                    <CustomButton customClasses="btn-two btn-outline-danger" btnText="Delete" isSmall="true" onClick={() => deleteItem(item.itemNo)}/>
                                                 </td>
                                             </tr>
                                         )

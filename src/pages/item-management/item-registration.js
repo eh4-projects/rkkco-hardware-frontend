@@ -5,9 +5,6 @@ import { ItemService } from '../../services/item.service';
 import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { useBarcode } from 'react-barcodes';
-import { BrandItemService } from '../../services/brand.service';
-import { CatergoryItemService } from '../../services/category.service';
-import { UnitService } from '../../services/unit.service';
 import { MetaDataContextAPI } from '../../components/contexts/meta-data.context';
 
 const ItemRegistration = () => {
@@ -15,7 +12,7 @@ const ItemRegistration = () => {
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
     const [itemNo, setItemNo] = useState(undefined);
-    const { categories, brands} = useContext(MetaDataContextAPI);
+    const { categories, brands, units } = useContext(MetaDataContextAPI);
 
     useEffect(() => {
         const service = new ItemService(setLoader, setAlert, setAuth);
@@ -40,9 +37,6 @@ const ItemRegistration = () => {
     const [itemImage, setItemImage] = useState(DefaultImage);
     const [form, setForm] = useState(initObject);
     const [itemBarCode, setItemBarCode] = useState(undefined);
-    const [itemBrandList, setItemBrandList] = useState([]);
-    const [itemCategoryList, setItemCategoryList] = useState([]);
-    const [unitList, setUnitList] = useState([]);
 
     const ImageHandler = (e) => {
         const reader = new FileReader();
@@ -65,16 +59,6 @@ const ItemRegistration = () => {
 
     useEffect(() => {
         generateBarcode();
-
-        // const brandService = new BrandItemService(setLoader, setAlert, setAuth);
-        // brandService.getAllBrands(setItemBrandList);
-
-        // const categoryService = new CatergoryItemService(setLoader, setAlert, setAuth);
-        // categoryService.getCategory(setItemCategoryList);
-
-        const unitService = new UnitService(setLoader, setAlert, setAuth);
-        unitService.getUnit(setUnitList);
-
     }, [itemNo])
 
     const generateBarcode = () => {
@@ -101,7 +85,6 @@ const ItemRegistration = () => {
         if (itemImage !== '/static/media/default_image_01.6988980f.png') {
             form.itemImage = itemImage;
         }
-        console.log(form.category);
         form.brand = { "id": parseInt(form.brand) };
         form.category = { "id": parseInt(form.category) };
         form.buyingPrice = parseFloat(form.buyingPrice);
@@ -112,11 +95,6 @@ const ItemRegistration = () => {
         form.itemImage = btoa(form.itemImage)
         form.barcode = itemBarCode;
         itemService.addItem(form);
-    }
-
-    const getAllBrands = () => {
-        const service = new CatergoryItemService(setLoader, setAlert, setAuth);
-        service.getCategory(setItemCategoryList);
     }
 
     return (
@@ -130,7 +108,6 @@ const ItemRegistration = () => {
                             <div className="row scan-btn-row">
                                 <div>
                                     <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan Code" isSmall="true" />
-                                    <CustomButton customClasses="scan-btn stock-btn btn btn-outline-primary" btnText="Scan " isSmall="true" onClick={() => getAllBrands()} />
                                 </div>
                             </div>
                             <form className="stock-update-form">
@@ -183,8 +160,8 @@ const ItemRegistration = () => {
                                         <p className="field-title">Unit</p>
                                         {/* <input type="text" name="unit" onChange={(e) => { handleChange(e.target.name, e.target.value) }} list="unitList" className="form-control dropdown form-control-sm" /> */}
                                         <select id="unitList" name="unit" onChange={(e) => { handleChange(e.target.name, e.target.value) }} className="form-control dropdown form-control-sm">
-                                            <option></option>
-                                            {unitList.map((data) =>
+                                            <option ></option>
+                                            {units.map((data) =>
                                                 <option value={data.id}>{data.unitDescription}</option>
                                             )}
                                         </select>

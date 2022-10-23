@@ -10,7 +10,7 @@ class UnitService {
         this.setLoader = setLoader
     }
 
-    getUnit(setUnitList = () => undefined) {
+    getUnits(setUnitList = () => undefined) {
         this.setLoader(true);
         apiRequest(unitApi, "GET").then((axioResponse) => {
             if (axioResponse.status === 202) {
