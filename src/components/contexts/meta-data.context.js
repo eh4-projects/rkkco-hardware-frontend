@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CatergoryItemService } from '../../services/category.service';
 import { ItemService } from '../../services/item.service';
 import { BrandItemService } from '../../services/brand.service';
+import { UnitService } from '../../services/unit.service';
 
 const MetaDataContextAPI = React.createContext();
 
@@ -19,11 +20,16 @@ const MetaDataContext = ({ children }) => {
     const [brands, setBrands] = useState([]);
     const [brandsExpired, setBrandsExpired] = useState(true);
     const [brandsItemService, setBrandsItemService] = useState(null);
+    
+    const [units, setUnits] = useState([]);
+    const [unitsExpired, setUnitsExpired] = useState(true);
+    const [unitsService, setUnitsService] = useState(null);
 
     useEffect(() => {
         setCatergoryItemService(new CatergoryItemService());
         setItemService(new ItemService())
         setBrandsItemService(new BrandItemService());
+        setUnitsService(new UnitService());
     }, []);
 
     useEffect(() => {
@@ -41,9 +47,13 @@ const MetaDataContext = ({ children }) => {
     }, [brandsItemService, brandsExpired]);
 
     useEffect(() => {
-        console.log(items)
+        if (unitsService && unitsExpired) {
+            unitsService.getUnits(setUnits);
+            setUnitsExpired(false);
+        }
+    }, [unitsService, unitsExpired]);
 
-        console.log("items")
+    useEffect(() => {
         if (items.length > 0) {
             let map = new Map();
             for (let item of items) {
@@ -61,7 +71,7 @@ const MetaDataContext = ({ children }) => {
     }, [itemService, itemsExpired]);
 
     return (
-        <MetaDataContextAPI.Provider value={{ categories, items, itemMap, brands, setCategoriesExpired, setCatergoryItemService, setItemsExpired, setItemService }}>
+        <MetaDataContextAPI.Provider value={{ categories, items, itemMap, brands, units, setCategoriesExpired, setCatergoryItemService, setItemsExpired, setItemService }}>
             {children}
         </MetaDataContextAPI.Provider>
     );

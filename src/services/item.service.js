@@ -1,9 +1,5 @@
-import { categoryApi } from '../config/endpoints/category-add.endpoint';
-import { apiRequest, apiRequestWithToken } from "./core-api.service";
-import { userTypes } from '../config/user-type.config'
-import get from 'lodash.get';
-import { chatLinesAva } from '../config/endpoints/user-management.endpoint';
-import { itemApi, getItemNo, getItemListArray} from '../config/endpoints/items.endpoint';
+import { apiRequest } from "./core-api.service";
+import { itemApi, getItemNo } from '../config/endpoints/items.endpoint';
 
 class ItemService {
 
@@ -13,18 +9,14 @@ class ItemService {
         this.setLoader = setLoader
     }
 
-    addItem(categoryName, callback = () => { }) {
+    addItem(form, callback = () => { }) {
         this.setLoader(true);
-        const body = {
-            category: categoryName
-        }
-        apiRequest(categoryApi, 'POST', body).then(axioResponse => {
-            console.log(axioResponse)
+        apiRequest(itemApi, 'POST', form).then(axioResponse => {
             if (axioResponse.data.status) {
-                console.log('axioResponse');
                 this.setLoader(false);
                 this.setAlert('Success', 'Successfully Added', 'success');
                 callback();
+                window.location.reload();
             } else {
                 this.setLoader(false);
                 this.setAlert('Failed', axioResponse.data.message, 'error');
@@ -32,6 +24,7 @@ class ItemService {
         }).catch(axioError => {
             this.setLoader(false);
             this.setAlert('Failed', 'Something Went Wrong', 'error');
+            console.log(axioError);
         })
     }
 
@@ -44,6 +37,7 @@ class ItemService {
             }
         }).catch(axioError => {
             this.setLoader(false);
+            console.log(axioError);
         })
     }
 
@@ -61,7 +55,25 @@ class ItemService {
                 this.setLoader(false);
                 this.setAlert('Failed', 'Something Went Wrong', 'error');
             })
-        }
+    }
+
+    deleteItem(id) {
+        apiRequest(itemApi + '?item_no=' + id, 'DELETE')
+            .then(res => {
+                console.log(res.data.responseCode);
+                if (res.status === 202) {
+                    this.setLoader(false);
+                    this.setAlert('Success', res.data.message, 'success');
+                    window.location.reload();
+                } else {
+                    this.setLoader(false);
+                }
+            }).catch(error => {
+                console.log(error);
+                this.setLoader(false);
+                this.setAlert('Failed', 'Something Went Wrong', 'error');
+            })
+    }
 }
 
 export { ItemService };
