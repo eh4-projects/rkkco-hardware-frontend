@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { useForm } from '../../customer-hooks/form.hook';
 import { CustomButton } from '../../components/common/forms/custom-btn';
 import { CustomForm } from '../../components/common/forms/custom-form';
+import { Popup } from '../../components/common/ui-components/popup';
 import { CustomInput } from '../../components/common/forms/customInput';
 import { isNumber,isEmail,isRequired } from '../../config/validation.config';
 import { CustomSelectBox } from '../../components/common/forms/custom-select-box';
@@ -9,6 +10,7 @@ import { AuthContextAPI } from '../../components/contexts/auth.context';
 import { MetaDataContextAPI } from '../../components/contexts/meta-data.context';
 import { UIContextAPI } from '../../components/contexts/ui.context';
 import { UserService } from '../../services/user.service';
+import { QuotationPdf } from './generate-quotation-pdf';
 
 const initObject = {
     category: '',
@@ -131,10 +133,25 @@ const Quotation = () => {
     const submitQuotation = () => {
         console.log("Submit qt!");
         console.log(quotationForm);
+        setPopup(true);
     }
+
+    const [popup, setPopup] = useState(false);
 
     return (
         <div className="billing-home">
+
+            <Popup
+                state={popup}
+                handleState={setPopup}
+                header="Quotation"
+            >
+
+                <QuotationPdf 
+                    quotationData = {quotationForm}
+                />
+            </Popup>   
+
             <div className="container-fluid">
                 <div className="billing-content">
                     <label className="billing-topic">Quotation</label>
