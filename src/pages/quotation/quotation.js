@@ -125,14 +125,8 @@ const Quotation = () => {
         setInputItemList(tempArray)
     }
 
-    const submitOrder = () => {
-        console.log("Submit order!");
-        // console.log(inputItemList);
-    }
-
     const submitQuotation = () => {
-        console.log("Submit qt!");
-        console.log(quotationForm);
+        // console.log(quotationForm);
         setPopup(true);
     }
 
