@@ -31,9 +31,39 @@ const SideBarItems = [
         allowed: [userTypes.OcMember, userTypes.Admin],
     },
     {
+        icon: AiFillWechat,
+        displayName: "Items List",
+        link: "/items",
+        allowed: [userTypes.OcMember, userTypes.Admin],
+    },
+    {
         icon: RiBillFill,
         displayName: "Quotations",
         link: "/quotation",
+        allowed: [userTypes.Admin],
+    },
+    {
+        icon: RiBillFill,
+        displayName: "Billing",
+        link: "/billing",
+        allowed: [userTypes.Admin],
+    },
+    {
+        icon: RiBillFill,
+        displayName: "Daily Reports",
+        link: "/daily-reports",
+        allowed: [userTypes.Admin],
+    },
+    {
+        icon: RiBillFill,
+        displayName: "Brand Registraion",
+        link: "/item-brand-registration",
+        allowed: [userTypes.Admin],
+    },
+    {
+        icon: RiBillFill,
+        displayName: "Category Registraion",
+        link: "/item-category-registration",
         allowed: [userTypes.Admin],
     },
 

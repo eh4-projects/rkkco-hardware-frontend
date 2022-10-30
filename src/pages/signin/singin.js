@@ -9,27 +9,30 @@ import { UIContextAPI } from "../../components/contexts/ui.context";
 import { AuthContextAPI } from "../../components/contexts/auth.context";
 import { isEmail, isRequired } from '../../config/validation.config';
 import { UserService } from '../../services/user.service';
+import { MetaDataContextAPI } from '../../components/contexts/meta-data.context';
+import { CatergoryItemService } from '../../services/category.service';
 
 const SignIn = () => {
     const [form, errors, setFormCustom, setErrorCustom] = useForm(errorInitObject, formInitObject);
     const [userService, setuserService] = useState(undefined);
     const { setAuth } = useContext(AuthContextAPI);
     const { setLoader, setAlert } = useContext(UIContextAPI);
-
+   
     const onSubmit = async () => {
-        await userService.signin(form.email, form.password);
+        await userService.signin(form.userName, form.password);
     };
     useEffect(() => {
         setuserService(new UserService(setLoader, setAlert, setAuth));
     }, []);
 
     return <div className='login-form-main'>
+        
         <CustomForm
             mainClass="login-form-card"
             onSubmit={onSubmit}
             setError={setErrorCustom}
             errors={errors}>
-
+       
             <div className="card">
                 <div className="card-header login-card-header">
                     <h3 className="card-title">Welcome!</h3>
@@ -40,14 +43,14 @@ const SignIn = () => {
                             <CustomInput
                                 className="cust-input"
                                 placeholder="RKK00001"
-                                name="email"
+                                name="userName"
                                 label="User ID"
                                 type="text"
-                                value={form.email}
+                                value={form.userName}
                                 onChange={setFormCustom}
-                                errorMsg={errors.email}
+                                errorMsg={errors.userName}
                                 setError={setErrorCustom}
-                                validations={[isRequired, isEmail]}
+                                validations={[isRequired]}
                                 maxLength={320}
                                 disabled={false}
                             />

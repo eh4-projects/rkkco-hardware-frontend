@@ -15,7 +15,7 @@ const CustomButton = ({
         <button
             disabled={disabled}
             type={btnType}
-            className={`btn custom-btn ${isSmall ? 'btn-sm' : ''} ${type === "submit" ? "custom-btn-primary" : ''} ${isBlock ? 'btn-block' : ''}  ${customClasses}`}
+            className={`btn custom-btn btn-sm ${isSmall ? 'btn-sm' : ''} ${type === "submit" ? "custom-btn-primary" : ''} ${isBlock ? 'btn-block' : ''}  ${customClasses}`}
             onClick={onClick}
         >
             {btnText}

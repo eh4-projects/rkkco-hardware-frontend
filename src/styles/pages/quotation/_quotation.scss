@@ -1,0 +1,119 @@
+.quotation-home {
+    .quotation-content {
+        .quotation-topic {
+            font-size: 25px;
+            font-weight: 500;
+            margin-top: 9vh;
+        }
+    }
+    .quotation-update-form {
+        margin-top: 0px;
+    }
+    .dropdown {
+        width: 100%;
+    }
+    .field-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 15px;
+        margin-bottom: 2px;
+    }
+    .field-title-quotation {
+        font-size: 15px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 15px;
+        margin-bottom: 2px;
+    }
+    .field-title-quotation-value {
+        font-size: 15px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 15px;
+        margin-bottom: 2px;
+        float: right;
+    }
+    .field-title-quotation-value-input {
+        font-size: 15px;
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        margin-top: 10px;
+        margin-bottom: 2px;
+        text-align: right; 
+    }
+    .btn-group {
+        margin-top: 0px;
+    }
+    .quotation-btn {
+        margin-right: 10px;
+        width: 150px;
+    }
+    .btn-one {
+        color: green;
+    }
+    .btn-two {
+        color: red;
+    }
+    .btn-three {
+        color: rgb(0, 110, 255);
+    }
+    .quotation-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        .list-header {
+            display: none;
+        }
+    }
+    .pagination-div {
+        margin-bottom: -15px;
+    }
+    .btn-print-bill{
+        float: right;  
+        margin-right: -1%;
+    }
+
+    .k-pdf-export {
+        .card-header {
+            display: none;
+        }
+        .list-header {
+            display: block;
+            .pdf-header {
+                margin: auto;
+                color: black;
+                font-size: 20px;
+                font-weight: 500;
+                text-align: center;
+                text-decoration: underline;
+            }
+        }
+        .stock-table-header th {
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .stock-table-body th {
+            font-size: 12px;
+        }
+        .stock-table-body td {
+            font-size: 12px;
+        }
+    }
+
+    .list-header {
+        
+    }
+}
+
+.quotation-pdf {
+    .invoice-head td {
+        padding: 0 8px;
+      }
+      .container {
+        padding-top:30px;
+      }
+      address{
+        margin-top:15px;
+      }
+}

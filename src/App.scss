@@ -24,13 +24,16 @@ $fontTitleColor: #3d3d3d;
 .main-router-non-auth {
     min-height: calc(100vh - 56px);
 }
+
 .main-router-auth {
     padding-left: 250px;
     min-height: 90vh;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 .image-loader-main {
     background-color: white;
     height: 100vh;
@@ -39,15 +42,19 @@ html {
     z-index: 100000;
     top: 0;
 }
+
 .text-color-white {
     color: white;
 }
+
 .text-color-success {
     color: $successColor;
 }
+
 .form-error {
     font-size: 14px;
 }
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./styles/common/forms/custom-btn";
 @import "./styles/common/forms/custom-fileuploader";
@@ -77,6 +84,7 @@ html {
 
 //?item-management
 @import "./styles/pages/item-management/item-registration.scss";
+@import "./styles/pages/item-management/item-list.scss";
 
 @import "./styles/pages/pages";
 @import "styles/pages/items/items";
@@ -92,4 +100,23 @@ html {
 @import "./styles/pages/user/includes/user-popup.scss";
 
 //regster
-@import "./styles/pages/register/register.scss"
+@import "./styles/pages/register/register.scss";
+
+//daily-reports
+@import "./styles/pages/daily-reports/daily-reports.scss";
+@import "./styles/pages/daily-reports/report-page.scss";
+
+//billing-main-page
+@import "./styles/pages/billing/billing-main-page.scss";
+
+//home-lobby
+// @import "./styles/pages/home/home-lobby.scss";
+
+//item-brand-registration
+@import "./styles/pages/item-brand-registration/item-brand-registration.scss";
+
+//item-category-registration
+@import "./styles/pages/item-category-registration/item-category-registration.scss";
+
+//quotation
+@import "./styles/pages/quotation/quotation";

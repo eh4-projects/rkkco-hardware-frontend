@@ -1,19 +1,4 @@
-import {
-    // userLogin,
-    userRegister,
-    // getCountries,
-    // getUserProfileDetails,
-    // updateUserProfile,
-    // deleteUserProfile,
-    // changePassword,
-    // createUser,
-    // getUserTypesAPI,
-    // forgotPasswordRequestAPI,
-    // forgotPasswordIsAvtive,
-    // resetPasswordAPI,
-    // submitFeedback,
-    // getAllUsers
-} from '../config/endpoints/user.endpoint'
+import { userLogin, userRegister } from '../config/endpoints/user.endpoint'
 import { apiRequest, apiRequestWithToken } from "./core-api.service";
 import { userTypes } from '../config/user-type.config'
 import get from 'lodash.get';
@@ -66,11 +51,8 @@ class UserService {
     //     })
     // }
 
-    signin(email, password) {
-
+    signin(userName, password) {
         this.setLoader(true);
-
-
         if (email === 'admin@admin.com' && password === 'admin') {
             localStorage.setItem('jwt', `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZnVsbE5hbWUiOiJKb2huIERvZSIsInVzZXJUeXBlIjoiQWRtaW4iLCJpYXQiOjE5MTYyMzkwMjJ9.Uz5TVUD-9ykj5M6XtD1asJRubbsNNKiOJ3dbxROt28c
             `);
@@ -97,8 +79,31 @@ class UserService {
         //     }
         // }).catch(axioError => {
         //     this.setLoader(false);
-        //     this.setAlert('Failed', 'Something Went Wrong', 'error');
-        // })
+        //     this.setAlert('Success', 'Successfully Logged', 'success');
+        // } else{
+        //     this.setLoader(false);
+        //     this.setAlert('Failed', "Something Went wrong", 'error');
+        // }
+        const body = {
+            userName, password
+        }
+        console.log(body);
+        apiRequest(userLogin, 'POST', body).then(axioResponse => {
+            console.log(axioResponse)
+            if (axioResponse.data.status) {
+                console.log('axioResponse')
+                localStorage.setItem('jwt', axioResponse.data.jwt);
+                this.setAuth(true);
+                this.setLoader(false);
+                this.setAlert('Success', 'Successfully Logged', 'success');
+            } else {
+                this.setLoader(false);
+                this.setAlert('Failed', axioResponse.data.message, 'error');
+            }
+        }).catch(axioError => {
+            this.setLoader(false);
+            this.setAlert('Failed', 'Something Went Wrong', 'error');
+        })
     }
 
     // getUserProfileDetails(setProfile, setName) {

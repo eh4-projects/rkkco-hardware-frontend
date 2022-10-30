@@ -18,6 +18,7 @@ const CustomInput = ({
     validations = [],
     password = "",
     maxLength = 25,
+    labelClassName = ""
 }) => {
     const [localError, setLocalError] = useState("");
     useEffect(() => {
@@ -154,7 +155,7 @@ const CustomInput = ({
 
     return (
         <div className={`form-group text-left ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''} ${extraClassesWrapper}`}>
-            {label ? <label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''}`}>
+            {label ? <label className={`cust-input-lable ${errorMsg && errorMsg !== unTouched ? 'text-danger' : ''} ${labelClassName}`}>
                 {label}
             </label> : null}
             <input
@@ -163,7 +164,7 @@ const CustomInput = ({
                 name={name}
                 type={type}
                 disabled={disabled}
-                className={`form-control ${extraClasses} ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''}`}
+                className={`form-control form-control-sm ${extraClasses} ${errorMsg && errorMsg !== unTouched ? 'is-invalid' : ''}`}
                 placeholder={placeholder}
 
 
